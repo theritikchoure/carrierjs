@@ -16,7 +16,7 @@
     };
 
     a.carrier = {
-        get: function(url, options) {
+        get: function(url) {
             let promise = new Promise(async (resolve, reject) =>{
                 let req = new XMLHttpRequest();
                 req.responseType = 'text';
@@ -47,27 +47,20 @@
 
             return promise;
         },
-        script: function(url, options) {
+        script: function(url) {
             let promise = new Promise(async (resolve, reject) =>{
         
                 if(cache && cache.hasOwnProperty(url)) {
                     const res = cache[url];
-                    if(res.type === 'script') {
-                        if(res.status === 200) {
-                            appendScript(res);
-                            resolve(res.response)
-                        }
+                    if(res.status === 200) {
+                        appendScript(res);
+                        resolve(res.response)
                     }
                     resolve(res)
                 } else {
 
                     const req = new XMLHttpRequest();
-                    req.responseType = 'json'
-                    if(options?.type) {
-                        if(options.type === 'script') {
-                            req.responseType = 'text'
-                        }
-                    }
+                    req.responseType = 'text';
 
                     req.open("GET", url);
                     req.onload = () => {
@@ -78,7 +71,7 @@
                             request: req.readyState,
                             url: req.responseURL,
                             status: req.status,
-                            type: options?.type || 'json'
+                            type: 'script'
                         }
         
                         if(cache === null) {
@@ -90,11 +83,9 @@
                         cache[url] = res        
                         localStorage.setItem('carrierCache', JSON.stringify(cache));
 
-                        if(res.type === 'script') {
-                            if(res.status === 200) {
-                                appendScript(res);
-                                resolve(res.response)
-                            }
+                        if(res.status === 200) {
+                            appendScript(res);
+                            resolve(res.response)
                         }
         
                         resolve(res)

@@ -28,13 +28,13 @@
       <ul class="menu">
         <div class="menu__item toggle"><span></span></div>
         <li class="menu__item">
-          <a href="https://www.npmjs.com/package/headx" class="link link--dark"
+          <a href="https://www.npmjs.com/package/carrierjs" class="link link--dark"
             ><i class="fa fa-book"></i> NPM Registry</a
           >
         </li>
         <li class="menu__item">
           <a
-            href="https://github.com/theritikchoure/headx"
+            href="https://github.com/theritikchoure/carrierjs"
             class="link link--dark"
             ><i class="fa fa-github"></i> Github</a
           >
@@ -43,7 +43,7 @@
     </nav>
     <div class="hero">
       <h1 class="hero__title">Carrier JS </h1>
-      <p class="hero__description">Make Request to Server Along With Caching Feature</b></p>
+      <p class="hero__description">Promise based HTTP client for the browser with ultimate caching</b></p>
     </div>
     <div class="hero__terminal">
       <pre>
@@ -62,14 +62,26 @@
         <h3 class="section__title">Installation</h3>
         <div class="tab__container">
           <ul class="tab__menu">
-            <li class="tab active" data-tab="mac">npm</li>
-            <li class="tab" data-tab="linux">yarn</li>
+            <li class="tab active" data-tab="npm">npm</li>
+            <li class="tab" data-tab="cdn">cdn</li>
+            <li class="tab" data-tab="jsDelivr">jsDelivr</li>
+            <li class="tab" data-tab="unpkg">unpkg</li>
           </ul>
           <pre class="nohighlight code">
-            <code class="tab__pane active mac" onclick="copyToClipboard(npmcode)" id="npmcode">$  npm install headx</code>
-            <code class="tab__pane linux">$  yarn add headx</code>
+            <code class="tab__pane active npm" onclick="copyToClipboard(npmcode)" id="npmcode">npm install carrierjs</code>
+            <code class="tab__pane cdn">&lt;script src="https://theritikchoure.github.io/carrierjs/carrier.js"&gt;</script></code>
+            <code class="tab__pane jsDelivr">&lt;script src="https://cdn.jsdelivr.net/npm/carrierjs@1/carrier.min.js"&gt;</script></code>
+            <code class="tab__pane unpkg">&lt;script src="https://unpkg.com/carrierjs@1.0.1/carrier.js"&gt;</script></code>
           </pre>
         </div>
+      </div>
+      <div class="installation">
+        <h3 class="section__title">Features</h3>
+        <ul>
+          <li><p>Make XMLHttpRequest from browser</p></li>
+          <li><p>Supports All Browsers</p></li>
+          <li><p>Enable LocalStorage Based Resource Caching</p></li>
+        </ul>
       </div>
       <div class="installation">
         <h3 class="section__title">Usage</h3>
@@ -79,25 +91,33 @@
           title and description.
         </p>
 
-        <p><strong>Example with just title and description:</strong></p>
+        <p><strong>Performing a <span>GET</span> request:</strong></p>
+        
         <pre class="nohighlight code">
           <code>
-<span>import</span> Headx <span>from</span> <span>'headx'</span>;
+async function getUser() {
+  try {
+    const response = await carrier.get('https://jsonplaceholder.typicode.com/tosdos/')
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+          </code>
+        </pre>
 
-const Page = <span><span>()</span> =&gt;</span> (
-  &lt;&gt;
-    &lt;Headx
-      title=<span>"Headx - Document Head Manager ⚓"</span>
-      meta={[{<span>name</span>: <span>'description'</span>, <span>content</span>: <span>'Document Head Manager ⚓'</span>}]}
-    /&gt;
+        <!-- Script Loading  -->
+        <p><strong>Performing a <span>Script</span> loading:</strong></p>
+        <pre class="nohighlight code">
+          <code>
+&lt;head&gt;
+  &lt;script&gt;
+    carrier.script('./path/to/file.js')
+  &lt;/script&gt;
+&lt;/head&gt;
+          </code>
+        </pre>
 
-    &lt;p&gt;Simple Usage&lt;/p&gt;
-  &lt;/&gt;
-);
-
-<span>export</span> default Page;
-
-</code></pre>
         <p>
           But <strong>Headx</strong> gives you many more options that you can add
           inside the <strong>&lt;head&gt;</strong> tag. See below for a more detail example of a page.
@@ -166,26 +186,6 @@ export <span>default</span> App
         <p>
           From now on all of your pages will have the defaults above applied.
         </p>
-      </div>
-      <div class="feature">
-        <div class="feature__item">
-          <h3 class="section__title">Supports</h3>
-          <p>
-            Supports all valid head tags: title, base, meta, link, script,
-            noscript, and style tags
-          </p>
-        </div>
-        <div class="feature__item">
-          <h3 class="section__title">No Duplicacy</h3>
-          <p>
-            Duplicate head changes are preserved when specified in the same
-            component
-          </p>
-        </div>
-        <div class="feature__item">
-          <h3 class="section__title">Fast & Light</h3>
-          <p>It is a simple, fast and lightweight package for react</p>
-        </div>
       </div>
       <div class="installation">
         <h3 class="section__title">Additional information</h3>

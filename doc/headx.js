@@ -12,7 +12,7 @@ var getAll = function (selector, scope) {
 // setup typewriter effect in the terminal demo
 if (document.getElementsByClassName('demo').length > 0) {
   var i = 0;
-  var txt = `npm i headx`;
+  var txt = `npm i carrierjs`;
   var speed = 30;
 
   function typeItOut () {
