@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Headx - a document head manager for react</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+    />
+    <link rel="stylesheet" href="headx-global.css" />
+    <link rel="stylesheet" href="headx-landing.css" />
+    <link rel="author" href="humans.txt" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo"></div>
+      <ul class="menu">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item">
+          <a href="https://www.npmjs.com/package/headx" class="link link--dark"
+            ><i class="fa fa-book"></i> NPM Registry</a
+          >
+        </li>
+        <li class="menu__item">
+          <a
+            href="https://github.com/theritikchoure/headx"
+            class="link link--dark"
+            ><i class="fa fa-github"></i> Github</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1 class="hero__title">Carrier JS </h1>
+      <p class="hero__description">Make Request to Server Along With Caching Feature</b></p>
+    </div>
+    <div class="hero__terminal">
+      <pre>
+        <!-- Place your demo code here -->
+        <code class="shell-session demo">usr ~ $ </code>
+      </pre>
+    </div>
+    <div class="wrapper">
+      <div class="installation">
+        <h3 class="section__title">Get Started</h3>
+        <p>
+          Carrier JS is used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing. It allows you to load your scripts and stylesheet files with caching.
+        </p>
+      </div>
+      <div class="installation">
+        <h3 class="section__title">Installation</h3>
+        <div class="tab__container">
+          <ul class="tab__menu">
+            <li class="tab active" data-tab="mac">npm</li>
+            <li class="tab" data-tab="linux">yarn</li>
+          </ul>
+          <pre class="nohighlight code">
+            <code class="tab__pane active mac" onclick="copyToClipboard(npmcode)" id="npmcode">$  npm install headx</code>
+            <code class="tab__pane linux">$  yarn add headx</code>
+          </pre>
+        </div>
+      </div>
+      <div class="installation">
+        <h3 class="section__title">Usage</h3>
+        <p>
+          Then you need to import `headx` as `Headx`. This will render out the
+          tags in the &lt;head&gt; for SEO. At a bare minimum, you should add a
+          title and description.
+        </p>
+
+        <p><strong>Example with just title and description:</strong></p>
+        <pre class="nohighlight code">
+          <code>
+<span>import</span> Headx <span>from</span> <span>'headx'</span>;
+
+const Page = <span><span>()</span> =&gt;</span> (
+  &lt;&gt;
+    &lt;Headx
+      title=<span>"Headx - Document Head Manager ⚓"</span>
+      meta={[{<span>name</span>: <span>'description'</span>, <span>content</span>: <span>'Document Head Manager ⚓'</span>}]}
+    /&gt;
+
+    &lt;p&gt;Simple Usage&lt;/p&gt;
+  &lt;/&gt;
+);
+
+<span>export</span> default Page;
+
+</code></pre>
+        <p>
+          But <strong>Headx</strong> gives you many more options that you can add
+          inside the <strong>&lt;head&gt;</strong> tag. See below for a more detail example of a page.
+        </p>
+        <p><strong>Typical page example:</strong></p>
+        <pre class="nohighlight code"><code><span>import</span> React from <span>'react'</span>
+
+<span>import</span> Headx from <span>'headx'</span>
+
+const App = () =&gt; {
+    return ( 
+      &lt;div&gt;
+        &lt;Headx 
+          title=<span>"Headx - Document Head Manager ⚓"</span> 
+          meta={[{name: <span>'description'</span>, content: <span>'Document Head Manager ⚓'</span>}, 
+          {name: <span>'author'</span>, content: <span>'theritikchoure'</span>}]}
+          httpEquiv={[{name: <span>'refresh'</span>, content: <span>'30'</span>}]}
+          links={[{name: <span>'stylesheet'</span>, content: <span>'styles.css'</span>}]}
+          og={[{name: <span>'type'</span>, content: <span>'website'</span>}, 
+              {name: <span>'url'</span>, content: <span>'http://example.com'</span>}]}
+          twitter={[{name: <span>'type'</span>, content: <span>'website'</span>}, 
+              {name: <span>'url'</span>, content: <span>'http://example.com'</span>}]}
+        /&gt;
+      &lt;/div&gt;
+    )
+}
+
+export <span>default</span> App
+</code></pre>
+        <h3 id="default-seo-configuration">Default SEO Configuration</h3>
+        <p>
+          <strong>Headx</strong> enables you to set some default SEO properties that
+          will appear on all pages without needing to include anything on them.
+          You can also override these on a page by page basis if needed.
+        </p>
+        <p>
+          To achieve this, Within your <strong>Layout</strong> or
+          <strong>Header</strong> file you will need to import
+          <strong>headx</strong> and pass it props.
+        </p>
+        <p>Here is a typical example:</p>
+        <pre class="nohighlight code"><code><span>import</span> React from <span>'react'</span>
+
+<span>import</span> Headx from <span>'headx'</span>
+
+const App = () =&gt; {
+    return ( 
+      &lt;div&gt;
+        &lt;Headx 
+          og={[{name: <span>'type'</span>, content: <span>'website'</span>}, 
+              {name: <span>'url'</span>, content: <span>'http://example.com'</span>}]}
+          twitter={[{name: <span>'type'</span>, content: <span>'website'</span>}, 
+              {name: <span>'url'</span>, content: <span>'http://example.com'</span>}]}
+        /&gt;
+      &lt;/div&gt;
+    )
+}
+
+export <span>default</span> App
+</code></pre>
+        <p>
+          <strong>Note:</strong> To work properly default seo configuration,
+          <strong>Headx</strong> should be placed in <strong>Layout</strong> or
+          <strong>Navbar</strong> file.
+        </p>
+        <p>
+          From now on all of your pages will have the defaults above applied.
+        </p>
+      </div>
+      <div class="feature">
+        <div class="feature__item">
+          <h3 class="section__title">Supports</h3>
+          <p>
+            Supports all valid head tags: title, base, meta, link, script,
+            noscript, and style tags
+          </p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">No Duplicacy</h3>
+          <p>
+            Duplicate head changes are preserved when specified in the same
+            component
+          </p>
+        </div>
+        <div class="feature__item">
+          <h3 class="section__title">Fast & Light</h3>
+          <p>It is a simple, fast and lightweight package for react</p>
+        </div>
+      </div>
+      <div class="installation">
+        <h3 class="section__title">Additional information</h3>
+        <p>
+          This package creates the tags in the html file before the closing head
+          tag.
+        </p>
+      </div>
+      <div class="installation">
+        <h3 class="section__title">License</h3>
+        <p>
+          This package is licensed under the MIT license. Author: theritikchoure
+        </p>
+      </div>
+      <div class="callout">
+        <p>Go to NPM Registry</p>
+        <a href="https://www.npmjs.com/package/headx" class="button--primary"
+          >Headx - NPM</a
+        >
+      </div>
+    </div>
+    <footer class="footer">
+      Headx - Created with ❣️ by
+      <a
+        href="https://github.com/theritikchoure"
+        target="_blank"
+        class="link link--light"
+        >Ritik Chourasiya</a
+      >.
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <script src="headx.js"></script>
+  </body>
+</html>
