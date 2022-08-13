@@ -85,19 +85,24 @@
       </div>
       <div class="installation">
         <h3 class="section__title">Usage</h3>
-        <p>
-          Then you need to import `headx` as `Headx`. This will render out the
-          tags in the &lt;head&gt; for SEO. At a bare minimum, you should add a
-          title and description.
-        </p>
 
         <p><strong>Performing a <span>GET</span> request:</strong></p>
         
         <pre class="nohighlight code">
           <code>
+// Using Promise
+carrier.get('/todos').then((result) => {
+    console.log(result)
+}).catch((err) => {
+    console.log(err)
+});
+
+---------
+
+// Using Async/Await
 async function getUser() {
   try {
-    const response = await carrier.get('https://jsonplaceholder.typicode.com/tosdos/')
+    const response = await carrier.get('/todos')
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -105,6 +110,41 @@ async function getUser() {
 }
           </code>
         </pre>
+        <br>
+        <p><strong>Performing a <span>POST</span> request:</strong></p>
+        
+        <pre class="nohighlight code">
+          <code>
+const data = {
+	title: "delectus aut autem",
+	completed: false
+}
+
+// Using Promise
+carrier.post('/todos', data).then((result) => {
+    console.log(result)
+}).catch((err) => {
+    console.log(err)
+});
+
+---------
+
+// Using Async/Await
+async function createUser(data) {
+  try {
+    const response = await carrier.post('/todos', data)
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+createUser(data);
+          </code>
+        </pre>
+
+        <!-- Note -->
+        <p><strong>NOTE: </strong> <code>  async/await </code> is part of ECMAScript of 2017 Version and is not supported in Internet Explorer and older browsers, so use with caution.</p>
 
         <!-- Script Loading  -->
         <p><strong>Performing a <span>Script</span> loading:</strong></p>
@@ -117,81 +157,41 @@ async function getUser() {
 &lt;/head&gt;
           </code>
         </pre>
-
-        <p>
-          But <strong>Headx</strong> gives you many more options that you can add
-          inside the <strong>&lt;head&gt;</strong> tag. See below for a more detail example of a page.
-        </p>
-        <p><strong>Typical page example:</strong></p>
-        <pre class="nohighlight code"><code><span>import</span> React from <span>'react'</span>
-
-<span>import</span> Headx from <span>'headx'</span>
-
-const App = () =&gt; {
-    return ( 
-      &lt;div&gt;
-        &lt;Headx 
-          title=<span>"Headx - Document Head Manager ⚓"</span> 
-          meta={[{name: <span>'description'</span>, content: <span>'Document Head Manager ⚓'</span>}, 
-          {name: <span>'author'</span>, content: <span>'theritikchoure'</span>}]}
-          httpEquiv={[{name: <span>'refresh'</span>, content: <span>'30'</span>}]}
-          links={[{name: <span>'stylesheet'</span>, content: <span>'styles.css'</span>}]}
-          og={[{name: <span>'type'</span>, content: <span>'website'</span>}, 
-              {name: <span>'url'</span>, content: <span>'http://example.com'</span>}]}
-          twitter={[{name: <span>'type'</span>, content: <span>'website'</span>}, 
-              {name: <span>'url'</span>, content: <span>'http://example.com'</span>}]}
-        /&gt;
-      &lt;/div&gt;
-    )
-}
-
-export <span>default</span> App
-</code></pre>
-        <h3 id="default-seo-configuration">Default SEO Configuration</h3>
-        <p>
-          <strong>Headx</strong> enables you to set some default SEO properties that
-          will appear on all pages without needing to include anything on them.
-          You can also override these on a page by page basis if needed.
-        </p>
-        <p>
-          To achieve this, Within your <strong>Layout</strong> or
-          <strong>Header</strong> file you will need to import
-          <strong>headx</strong> and pass it props.
-        </p>
-        <p>Here is a typical example:</p>
-        <pre class="nohighlight code"><code><span>import</span> React from <span>'react'</span>
-
-<span>import</span> Headx from <span>'headx'</span>
-
-const App = () =&gt; {
-    return ( 
-      &lt;div&gt;
-        &lt;Headx 
-          og={[{name: <span>'type'</span>, content: <span>'website'</span>}, 
-              {name: <span>'url'</span>, content: <span>'http://example.com'</span>}]}
-          twitter={[{name: <span>'type'</span>, content: <span>'website'</span>}, 
-              {name: <span>'url'</span>, content: <span>'http://example.com'</span>}]}
-        /&gt;
-      &lt;/div&gt;
-    )
-}
-
-export <span>default</span> App
-</code></pre>
-        <p>
-          <strong>Note:</strong> To work properly default seo configuration,
-          <strong>Headx</strong> should be placed in <strong>Layout</strong> or
-          <strong>Navbar</strong> file.
-        </p>
-        <p>
-          From now on all of your pages will have the defaults above applied.
-        </p>
       </div>
       <div class="installation">
-        <h3 class="section__title">Additional information</h3>
+        <h3 class="section__title">Response Object</h3>
+        <p>The response for a request contains the following information.</p>
+        <pre class="nohighlight code">
+        <code>
+{
+  // `response` is the response that was provided by the server
+  response: {},
+
+  // `status` is the HTTP status code from the server response
+  status: 200,
+
+  // `type` is the type of response recieved from the server eg. json, script
+  type: '',
+
+  // `headers` the HTTP headers that the server responded with headers
+  headers: {},
+
+  // `config` is the config that was provided to `carrierjs` for the request
+  config: {},
+
+  // `request` is the request that generated this response
+  request: {}
+  
+  // `url` is the url to that request is generated
+  url: {}
+}
+          </code>
+        <pre>
+      </div>
+      <div class="installation">
+        <h3 class="section__title">Supports</h3>
         <p>
-          This package creates the tags in the html file before the closing head
-          tag.
+          This library supports on every browsers.
         </p>
       </div>
       <div class="installation">

@@ -74,6 +74,7 @@
                 let req = new XMLHttpRequest();
                 req.responseType = 'json';
                 req.open("POST", url);
+                req.setRequestHeader('Content-Type', 'application/json');
 
                 req.send(JSON.stringify(data));
 
@@ -111,7 +112,7 @@
             let promise = new Promise((resolve, reject) =>{
 
                 if(isEmpty(url)) {
-                    console.error(new Error('Url is required to make request'))
+                    console.error(new Error('Script source is required to make request'))
                     return;
                 }
         
