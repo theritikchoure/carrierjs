@@ -1,6 +1,6 @@
 {
   "name": "carrierjs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CarrierJS is a script and resource loader for caching and loading scripts using localStorage",
   "main": "carrier.js",
   "author": "theritikchoure",
@@ -9,8 +9,22 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "script", "loader", "localstorage", "carrierjs", "carrier", "ritikchoure", "theritikchoure", "license",
-    "caching", "asset", "preload", "javascript", "js", "xhr", "http", "request"
+    "script",
+    "loader",
+    "localstorage",
+    "carrierjs",
+    "carrier",
+    "ritikchoure",
+    "theritikchoure",
+    "license",
+    "caching",
+    "asset",
+    "preload",
+    "javascript",
+    "js",
+    "xhr",
+    "http",
+    "request"
   ],
   "repository": {
     "type": "git",
