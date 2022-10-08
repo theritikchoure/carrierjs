@@ -1,6 +1,6 @@
 {
   "name": "carrierjs",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "CarrierJS is a script and resource loader for caching and loading scripts using localStorage",
   "main": "carrier.js",
   "author": "theritikchoure",
