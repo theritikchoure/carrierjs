@@ -1,4 +1,4 @@
-![Carrier JS!](/doc/CarrierJS.png "Carrier JS")
+![Carrier JS!](https://raw.githubusercontent.com/theritikchoure/carrierjs/master/doc/CarrierJS.png "Carrier JS")
 
 # Carrier JS 
 
@@ -11,7 +11,7 @@
 ### Using NPM
 
 ```bash
-npm install --save headx
+npm install --save carrierjs
 ```
 
 ### Using CDN
@@ -32,11 +32,13 @@ npm install --save headx
 <script src="https://unpkg.com/carrierjs@1.0.1/carrier.js">
 ```
 
-## Features
+## Features of CarrierJs
 
-- Make XMLHttpRequest from browser
-- Supports All Browsers
-- Enable LocalStorage Based Resource Caching
+- Make **XMLHttpRequest** from browser
+- Supports **All Browsers**
+- Enable IndexedDB Based Caching which can store **250MB** of data
+- Data will not expire unless explicit deletion of the database **(persistent storage)**
+
 
 ## Usage
 
@@ -46,7 +48,7 @@ npm install --save headx
 ```jsx
 
 // Using Promise
-carrier.get('https://jsonplaceholder.typicode.com/tosdos/').then((result) => {
+carrier.get('https://jsonplaceholder.typicode.com/todos/').then((result) => {
     console.log(result)
 }).catch((err) => {
     console.log(err)
@@ -57,33 +59,42 @@ carrier.get('https://jsonplaceholder.typicode.com/tosdos/').then((result) => {
 // Using Async/Await
 async function getUser() {
   try {
-    const response = await carrier.get('https://jsonplaceholder.typicode.com/tosdos/')
+    const response = await carrier.get('https://jsonplaceholder.typicode.com/todos/')
     console.log(response);
   } catch (error) {
     console.error(error);
   }
 }
 ```
-
-**Performing a Script loading:**
+**Performing a POST request:**
 
 ```jsx
+const data = {
+	title: "delectus aut autem",
+	completed: false
+}
 
-// Inside head section
-<head>
-  <script>
-    carrier.script('./path/to/file.js')
-  </script>
-</head>
+// Using Promise
+carrier.post('/todos', data).then((result) => {
+    console.log(result)
+}).catch((err) => {
+    console.log(err)
+});
 
----------------------------------------
+---------
 
-// Inside body with script tag
-<script>
-    carrier.script('./path/to/file.js')
-</script>
+// Using Async/Await
+async function createUser(data) {
+  try {
+    const response = await carrier.post('/todos', data)
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+createUser(data);
 ```
-
 ### Supports
 This library supports on every browsers.
 
