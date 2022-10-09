@@ -133,7 +133,7 @@ This library supports on every browsers.
 It is a simple, fast and lightweight javascript library.
 
 ## Contributing
-Please read [CONTRIBUTING.md](https://github.com/theritikchoure/carrierjsblob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/theritikchoure/carrierjs/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
