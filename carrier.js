@@ -13,6 +13,11 @@
         if(a === undefined || a === null || a.length === 0) return true;
     }
 
+    let displayErrorMessage = (message) => {
+        console.error(new Error(message));
+        return;
+    }
+
     // create indexedDB instance
     let createIndexedDB = () => {
         let promise = new Promise((resolve, reject) => {
@@ -44,7 +49,7 @@
     let dbHasResponse = (url = null) => {
         let promise = new Promise(function(resolve, reject) {
             if(!url) {
-                console.log(new Error("Invalid url"));
+                displayErrorMessage("Invalid url");
                 return;
             };
 
@@ -95,7 +100,7 @@
             let promise = new Promise(async (resolve, reject) =>{
 
                 if(isEmpty(url)) {
-                    console.error(new Error('Url is required to make request'))
+                    displayErrorMessage('Url is required to make request');
                     return;
                 }
 
@@ -154,14 +159,64 @@
 
             return promise;
         },
-        post: function(url, data) {
+        post: function(url, data = null) {
             let promise = new Promise((resolve, reject) =>{
+
+                if(isEmpty(url)) {
+                    displayErrorMessage('Url is required to make request');
+                    return;
+                }
+
                 let req = new XMLHttpRequest();
                 req.responseType = 'json';
                 req.open("POST", url);
                 req.setRequestHeader('Content-Type', 'application/json');
 
-                req.send(JSON.stringify(data));
+                req.send(JSON.stringify(data) || null);
+
+                req.onload = () => {
+                    // Response Object
+                    const res = {
+                        config: '',
+                        response: req.response,
+                        headers: req.getAllResponseHeaders(),
+                        request: req.readyState,
+                        url: req.responseURL,
+                        status: req.status,
+                        type: 'json'
+                    };
+
+                    if(req.status === 200 || req.status === 201) {
+                        resolve(res);
+                    }
+
+                    if(req.status === 404) {
+                        reject(res);
+                    }
+                }
+
+                req.onreadystatechange = () => {
+                    if(req.readyState === 4 && req.status === 404) {
+                        // TODO
+                    }
+                }
+            });
+
+            return promise;
+        },
+        put: function(url, data = null) {
+            let promise = new Promise((resolve, reject) =>{
+                if(isEmpty(url)) {
+                    displayErrorMessage('Url is required to make request');
+                    return;
+                }
+
+                let req = new XMLHttpRequest();
+                req.responseType = 'json';
+                req.open("PUT", url);
+                req.setRequestHeader('Content-Type', 'application/json');
+
+                req.send(JSON.stringify(data) || null);
 
                 req.onload = () => {
                     // Response Object
@@ -194,5 +249,4 @@
             return promise;
         },
     }
-
 }(this, document);
