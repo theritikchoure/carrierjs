@@ -156,6 +156,12 @@ nav {
   text-align: center;
 }
 
+.contributor-hero {
+  text-align: center;
+  background-color: var(--bg-color);
+  padding: 2rem 0 2rem 0;
+}
+
 @media (max-width: 750px) {
   .hero__terminal {
     width: 70%;
