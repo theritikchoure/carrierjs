@@ -23,7 +23,7 @@ npm install --save carrierjs
 ### Using jsDelivr
 
 ```bash
-<script src="https://theritikchoure.github.io/carrierjs/carrier.js">
+<script src="https://cdn.jsdelivr.net/npm/carrierjs@1/carrier.min.js">
 ```
 
 ### Using unpkg

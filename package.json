@@ -10,7 +10,6 @@
   },
   "keywords": [
     "script",
-    "localstorage",
     "carrierjs",
     "carrier",
     "ritikchoure",
@@ -32,5 +31,5 @@
   "bugs": {
     "url": "https://github.com/theritikchoure/carrierjs/issues"
   },
-  "homepage": "https://github.com/theritikchoure/carrierjs#readme"
+  "homepage": "https://theritikchoure.github.io/carrierjs/doc/"
 }
