@@ -6,6 +6,12 @@
 
 [![NPM](https://nodei.co/npm/carrierjs.png)](https://nodei.co/npm/carrierjs/)
 
+## Flow of CarrierJs
+
+This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature. 
+
+![Flow of Carrierjs](/doc/img/code-flow.png)
+
 ## Install
 
 ### Using NPM
@@ -38,7 +44,7 @@ npm install --save carrierjs
 - Supports **All Browsers**
 - Enable IndexedDB Based Caching which can store **250MB** of data
 - Data will not expire unless explicit deletion of the database **(persistent storage)**
-
+- It decreases server round trips for fetching data from the database by persisting data in the memory.
 
 ## Usage
 
