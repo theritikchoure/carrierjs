@@ -11,9 +11,6 @@
 This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature. 
 
 ![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/img/code-flow.png)
-<p>
-    <img src="https://theritikchoure.github.io/carrierjs/doc/img/code-flow.png" width="220" height="240" />
-</p>
 
 ## Install
 
