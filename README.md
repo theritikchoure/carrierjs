@@ -1,3 +1,5 @@
+![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/Carrier.Js.png)
+
 # Carrier JS 
 
 > Carrier JS is promise based http client for browsers. It is used to interact with servers with ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
@@ -37,7 +39,7 @@
 
 This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature. 
 
-![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/Carrier.Js.png)
+![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/code-flow.png)
 
 ## Installation
 
