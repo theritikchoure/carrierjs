@@ -1,0 +1,19 @@
+name: "Warm Welcome"
+on:
+  pull_request:
+  issues:
+    types: [opened]
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.0.0
+    - name: grab and post gif and message
+      id: warm_welcome
+      uses: bntzio/warm-welcome-action@latest
+      with: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GIPHY_TOKEN: ${{ secrets.GIPHY_TOKEN }}
