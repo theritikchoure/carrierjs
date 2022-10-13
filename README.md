@@ -37,7 +37,7 @@
 
 This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature. 
 
-![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/img/code-flow.png)
+![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/Carrier.Js.png)
 
 ## Installation
 
