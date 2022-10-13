@@ -1,226 +1,115 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Carrier JS - Official Documentation</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
-    />
-    <link rel="stylesheet" href="global.css" />
-    <link rel="stylesheet" href="landing.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.png" />
-  </head>
-  <body>
-    <nav>
-      <div class="logo"></div>
-      <ul class="menu">
-        <div class="menu__item toggle"><span></span></div>
-        <li class="menu__item">
-          <a href="https://www.npmjs.com/package/carrierjs" class="link link--dark"
-            ><i class="fa fa-book"></i> NPM Registry</a
-          >
-        </li>
-        <li class="menu__item">
-          <a
-            href="https://github.com/theritikchoure/carrierjs"
-            class="link link--dark"
-            ><i class="fa fa-github"></i> Github</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <div class="hero">
-      <h1 class="hero__title">Carrier JS </h1>
-      <p class="hero__description">Promise based HTTP client for the browser with ultimate caching</b></p>
-    </div>
-    <div class="hero__terminal">
-      <pre>
-        <!-- Place your demo code here -->
-        <code class="shell-session demo">usr ~ $ </code>
-      </pre>
-    </div>
-    <div class="wrapper">
-      <div class="installation">
-        <h3 class="section__title">Get Started</h3>
-        <p>
-          Carrier JS is promise based http client for browsers. It is used to interact with servers with ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
-        </p>
-      </div>
-      <div class="installation">
-        <h3 class="section__title">Installation</h3>
-        <div class="tab__container">
-          <ul class="tab__menu">
-            <li class="tab active" data-tab="npm">npm</li>
-            <li class="tab" data-tab="cdn">cdn</li>
-            <li class="tab" data-tab="jsDelivr">jsDelivr</li>
-            <li class="tab" data-tab="unpkg">unpkg</li>
-          </ul>
-          <pre class="nohighlight code">
-            <code class="tab__pane active npm" onclick="copyToClipboard(npmcode)" id="npmcode">npm install carrierjs</code>
-            <code class="tab__pane cdn">&lt;script src="https://theritikchoure.github.io/carrierjs/carrier.js"&gt;</script></code>
-            <code class="tab__pane jsDelivr">&lt;script src="https://cdn.jsdelivr.net/npm/carrierjs@1/carrier.min.js"&gt;</script></code>
-            <code class="tab__pane unpkg">&lt;script src="https://unpkg.com/carrierjs@1.0.1/carrier.js"&gt;</script></code>
-          </pre>
-        </div>
-      </div>
-      <div class="installation">
-        <h3 class="section__title">Features</h3>
-        <ul>
-          <li><p>Make <b>XMLHttpRequest</b> from browser</p></li>
-          <li><p>Supports <b>All Browsers</b></p></li>
-          <li><p>Enable IndexedDB Based Caching which can store <b>250MB</b> of data</p></li>
-          <li><p>Data will not expire unless explicit deletion of the database <b>(persistent storage)</b></p></li>
-          <li><p>It decreases server round trips for fetching data from the database by persisting data in the memory.</p></li>
-        </ul>
-      </div>
-      <div class="installation">
-        <h3 class="section__title">Usage</h3>
+<html lang="en"> 
+<head>
+    <title>CarrierJs - Promise based HTTP client with ultimate caching</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootstrap Documentation Template For Software Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="assets/images/carrierjs-favicon.png"> 
+    
+    <!-- Google Font -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="assets/fonts/poppins.css">
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
 
-        <p><strong>Performing a <span>GET</span> request:</strong></p>
-        
-        <pre class="nohighlight code">
-          <code>
-// Using Promise
-carrier.get('/todos').then((result) => {
-    console.log(result)
-}).catch((err) => {
-    console.log(err)
-});
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head> 
 
----------
+<body>    
+    <header class="header fixed-top">	 
+	       
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon me-2" src="assets/images/carrierjs-logo.png" alt="logo"><span class="logo-text">Carrier<span class="text-alt">JS</span></span></a></div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	
+					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+		                <li class="list-inline-item"><a href="https://www.npmjs.com/package/carrierjs" target="_blank"><i class="fab fa-npm fa-fw"></i></a></li>
+						<li class="list-inline-item"><a href="https://github.com/theritikchoure/carrierjs" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="https://twitter.com/carrier_js" target="_blank"><i class="fab fa-twitter fa-fw"></i></a></li>
+		            </ul><!--//social-list-->
+		            <a href="docs.html" class="btn btn-primary d-none d-lg-flex">Go to Docs</a>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="page-header theme-bg-dark py-5 text-center position-relative">
+	    <div class="theme-bg-shapes-right"></div>
+	    <div class="theme-bg-shapes-left"></div>
+	    <div class="container">
+		    <h1 class="page-heading single-col-max mx-auto">Carrier JS</h1>
+		    <div class="page-intro single-col-max mx-auto">Promise based HTTP client for the browser with ultimate caching feature</div>
+	    </div>
+    </div><!--//page-header-->
+   <div class="page-content">
+	    <div class="container">
+		    <div class="docs-overview py-5">
+				<h5><span class="card-title-text">Introduction</span></h5>
+				<div class="card-text line-height-30">
+					Carrier JS is promise based http client for browsers. It is used to interact with servers with ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+				</div>
+				<br>
+				<br>
+				<h5><span class="card-title-text">Features</span></h5>
+				<ol class="line-height-30">
+					<li>Make <b>XMLHttpRequest</b> from browser</li>
+					<li>Supports <b>All Browsers</b></li>
+					<li>Enable <b>IndexedDB</b> Based Caching which can store <b>250MB</b> of data</li>
+					<li>Data will not expire unless explicit deletion of the database <b>(persistent storage)</b></li>
+					<li>It decreases server round trips for fetching data from the database by persisting data in the memory.</li>
+				</ol>
+		    </div><!--//container-->
+		</div><!--//container-->
+    </div><!--//page-content-->
 
-// Using Async/Await
-async function getUser() {
-  try {
-    const response = await carrier.get('/todos')
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
-          </code>
-        </pre>
-        <br>
-        <p><strong>Performing a <span>POST</span> request:</strong></p>
-        
-        <pre class="nohighlight code">
-          <code>
-const data = {
-	title: "delectus aut autem",
-	completed: false
-}
+    <section class="cta-section text-center position-relative mb-10">
+	    <div class="container">
+		    <div class="text-center">
+			    <a class="btn btn-primary" href="docs.html#installation">Get Started &nbsp;<i class="fas fa-arrow-right ml-2"></i></a>
+		    </div>
+	    </div>
+    </section><!--//cta-section-->
 
-// Using Promise
-carrier.post('/todos', data).then((result) => {
-    console.log(result)
-}).catch((err) => {
-    console.log(err)
-});
-
----------
-
-// Using Async/Await
-async function createUser(data) {
-  try {
-    const response = await carrier.post('/todos', data)
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-createUser(data);
-          </code>
-        </pre>
-
-        <!-- Note -->
-        <p><strong>NOTE: </strong> <code>  async/await </code> is part of ECMAScript of 2017 Version and is not supported in Internet Explorer and older browsers, so use with caution.</p>
-
-        <!-- Script Loading  -->
-        <p><strong>Performing a <span>Script</span> loading:</strong></p>
-        <pre class="nohighlight code">
-          <code>
-&lt;head&gt;
-  &lt;script&gt;
-    carrier.script('./path/to/file.js')
-  &lt;/script&gt;
-&lt;/head&gt;
-          </code>
-        </pre>
-      </div>
-      <div class="installation">
-        <h3 class="section__title">Response Object</h3>
-        <p>The response for a request contains the following information.</p>
-        <pre class="nohighlight code">
-        <code>
-{
-  // `response` is the response that was provided by the server
-  response: {},
-
-  // `status` is the HTTP status code from the server response
-  status: 200,
-
-  // `type` is the type of response recieved from the server eg. json, script
-  type: '',
-
-  // `headers` the HTTP headers that the server responded with headers
-  headers: {},
-
-  // `config` is the config that was provided to `carrierjs` for the request
-  config: {},
-
-  // `request` is the request that generated this response
-  request: {}
-  
-  // `url` is the url to that request is generated
-  url: {}
-}
-          </code>
-        <pre>
-      </div>
-      <div class="installation">
-        <h3 class="section__title">Supports</h3>
-        <p>
-          This library supports on every browsers.
-        </p>
-      </div>
-      <div class="installation">
-        <h3 class="section__title">License</h3>
-        <p>
-          This package is licensed under the MIT license. Author: theritikchoure
-        </p>
-      </div>
-      <div class="callout">
-        <p>Go to Github</p>
-        <a href="https://github.com/theritikchoure/carrierjs" class="button--primary"
-          >Carrier JS - Github</a
-        >
-      </div>
-    </div>
     <footer class="footer">
-      Carrier JS - Created with ❣️ by
-      <a
-        href="https://github.com/theritikchoure"
-        target="_blank"
-        class="link link--light"
-        >Ritik Chourasiya</a
-      >.
+
+	    <div class="footer-bottom text-center py-5">
+		    
+		    <ul class="social-list list-unstyled pb-4 mb-0">
+			    <li class="list-inline-item"><a href="https://www.npmjs.com/package/carrierjs" target="_blank"><i class="fab fa-npm fa-fw"></i></a></li>
+				<li class="list-inline-item"><a href="https://github.com/theritikchoure/carrierjs" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
+				<li class="list-inline-item"><a href="https://twitter.com/carrier_js" target="_blank"><i class="fab fa-twitter fa-fw"></i></a></li>
+	        </ul><!--//social-list-->
+	        
+	        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+			<small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>            
+	    </div>
+	    
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
-    <script src="script.js"></script>
-  </body>
-</html>
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script> -->
+	<script src="assets/plugins/highlights.js"></script>
+    <script src="assets/js/highlight-custom.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/docs.js"></script> 
+
+</body>
+</html> 
+

@@ -1,0 +1,48 @@
+.logo-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.line-height-30 {
+    line-height: 30px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.code-area {
+    white-space: normal;
+    padding: 1rem 1.5rem;
+    border-radius: 3px;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    background: #F8F8FA;
+    border: 1px solid #F0E8E8;
+    color: #8E7474;
+    overflow-x: auto!important;
+}
+
+pre {
+    margin-bottom: 0;
+}
+pre code {
+    background-color: transparent!important;
+}
+
+.docs-code-block {
+    background-color: #F8F8FA;
+    border: 1px solid #F0E8E8;
+    padding-bottom: 0;
+}
+
+.rounded {
+    margin-top: -11px;
+}
+
+.browser-support-table, .browser-support-table tr, td, th {
+    border: 1px solid black;
+}
+
+.docs-content {
+    padding-bottom: 0;
+}

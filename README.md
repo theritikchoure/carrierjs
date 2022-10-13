@@ -6,13 +6,40 @@
 
 [![NPM](https://nodei.co/npm/carrierjs.png)](https://nodei.co/npm/carrierjs/)
 
-## Flow of CarrierJs
+## Table of Contents
+
+- [Features](#features)
+- [Browser Support](#browser-support)
+- [How it works internally](#how-it-works-internally)
+- [Installation](#installation)
+- [Examples](#examples)
+- [Request method aliases](#request-method-aliases)
+- [Response Object](#response-object)
+- [Handling Errors](#handling-errors)
+- [Contribution](#contribution)
+- [License](#license)
+
+## Features
+
+- Make **XMLHttpRequest** from browser
+- Supports **All Browsers**
+- Enable IndexedDB Based Caching which can store **250MB** of data
+- Data will not expire unless explicit deletion of the database **(persistent storage)**
+- It decreases server round trips for fetching data from the database by persisting data in the memory.
+
+## Browser Support
+
+| Chrome | Edge  | Firefox | Opera | Safari 
+--- | --- | ---| ---| ---| 
+|✅|✅|✅|✅|✅|
+
+## How it works internally
 
 This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature. 
 
 ![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/img/code-flow.png)
 
-## Install
+## Installation
 
 ### Using NPM
 
@@ -38,15 +65,8 @@ npm install --save carrierjs
 <script src="https://unpkg.com/carrierjs@1.0.1/carrier.js">
 ```
 
-## Features of CarrierJs
 
-- Make **XMLHttpRequest** from browser
-- Supports **All Browsers**
-- Enable IndexedDB Based Caching which can store **250MB** of data
-- Data will not expire unless explicit deletion of the database **(persistent storage)**
-- It decreases server round trips for fetching data from the database by persisting data in the memory.
-
-## Usage
+## Examples
 
 
 **Performing a GET request:**
@@ -132,13 +152,51 @@ async function createUser(data) {
 createUser(data);
 ```
 
-### Supports
-This library supports on every browsers.
+## Request method aliases
 
-### Fast & Light
-It is a simple, fast and lightweight javascript library.
+For your ease, aliases have been provided for request methods.
 
-## Contributing
+**carrier.get(url, [refresh])**
+
+**carrier.post(url, [data])**
+
+**carrier.put(url, [data])**
+
+**carrier.delete(url, [data])**
+
+**Note -** While using this methods, `url` is required and `data` is optional. `refresh` is by default `false`. If you want to get fresh data everytime from the server, you need to send `true` after `url` parameter.
+
+## Response Object
+
+The response for a request contains the following information.
+
+```js
+{
+  // `response` is the response that was provided by the server
+  response: {},
+
+  // `status` is the HTTP status code from the server response
+  status: 200,
+
+  // `type` is the type of response recieved from the server eg. json, script
+  type: '',
+
+  // `headers` the HTTP headers that the server responded with headers
+  headers: {},
+
+  // `config` is the config that was provided to `carrierjs` for the request
+  config: {},
+
+  // `request` is the request that generated this response
+  request: {}
+  
+  // `url` is the url to that request is generated
+  url: {}
+}
+```
+
+## Contribution
+
 Please read [CONTRIBUTING.md](https://github.com/theritikchoure/carrierjs/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License

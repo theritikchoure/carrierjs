@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>CarrierJs - Official Docs</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Bootstrap 4 Template For Software Startups">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="assets/images/carrierjs-favicon.png"> 
+    
+    <!-- Google Font -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="assets/fonts/poppins.css">
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
+    
+    <!-- Plugins CSS -->
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css"> -->
+    <link rel="stylesheet" href="assets/css/atom-one-dark.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+
+</head> 
+
+<body class="docs-page">    
+    <header class="header fixed-top">	    
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon me-2" src="assets/images/carrierjs-logo.png" alt="logo"><span class="logo-text">Carrier<span class="text-alt">JS</span></span></a></div>    
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+		                <li class="list-inline-item"><a href="https://www.npmjs.com/package/carrierjs" target="_blank"><i class="fab fa-npm fa-fw"></i></a></li>
+						<li class="list-inline-item"><a href="https://github.com/theritikchoure/carrierjs" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="https://twitter.com/carrier_js" target="_blank"><i class="fab fa-twitter fa-fw"></i></a></li>
+					</ul><!--//social-list-->
+		            <a href="index.html" class="btn btn-primary d-none d-lg-flex">Home</a>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+    
+    
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#introduction"><span class="theme-icon-holder me-2"><i class="fas fa-map-signs"></i></span>Getting Started</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#introduction">Introduction</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#features">Features</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#browser-support">Browser Support</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#how-it-works-internally">How it works internally</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#installation">Installation</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#examples">Examples</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#request-method-aliases">Request method aliases</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#response-object">Response Object</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#handling-errors">Handling Errors</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="" onclick="return false;"><span class="theme-icon-holder me-2"><i class="fas fa-lightbulb"></i></span>Others</a></li>
+				    <li class="nav-item">
+						<a class="nav-link" href="https://github.com/theritikchoure/carrierjs/blob/master/CONTRIBUTING.md" target="_blank">Contribute to CarrierJs</a>
+					</li>
+				    <li class="nav-item">
+						<a class="nav-link" href="https://github.com/theritikchoure/carrierjs/blob/master/CODE_OF_CONDUCT.md" target="_blank">Code Of Conduct</a>
+					</li>
+				    <li class="nav-item">
+						<a class="nav-link" href="https://github.com/theritikchoure/carrierjs/blob/master/LICENSE.md" target="_blank">License</a>
+					</li>
+			    </ul>
+
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+			    <article class="docs-article" id="introduction">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Introduction <span class="docs-time">Last updated: <span id="updated-time">2019-06-01</span></span></h1>
+					    <section class="docs-intro">
+						    <p>
+								Carrier JS is promise based http client for browsers. It is used to interact with servers with ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+							</p>
+						</section><!--//docs-intro-->
+				    </header>
+
+					<section class="docs-section" id="features">
+						<h2 class="section-heading">Features</h2>
+						<ol class="line-height-30">
+							<li>Make <b>XMLHttpRequest</b> from browser</li>
+							<li>Supports <b>All Browsers</b></li>
+							<li>Enable <b>IndexedDB</b> Based Caching which can store <b>250MB</b> of data</li>
+							<li>Data will not expire unless explicit deletion of the database <b>(persistent storage)</b></li>
+							<li>It decreases server round trips for fetching data from the database by persisting data in the memory.</li>
+						</ol>
+					</section><!--//section-->
+					
+					<section class="docs-section" id="browser-support">
+						<h2 class="section-heading">Browser Support</h2>
+						<div class="table-responsive my-4">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">Chrome</th>
+										<th scope="col">Edge</th>
+										<th scope="col">Firefox</th>
+										<th scope="col">Opera</th>
+										<th scope="col">Safari</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>✅</td>
+										<td>✅</td>
+										<td>✅</td>
+										<td>✅</td>
+										<td>✅</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="how-it-works-internally">
+						<h2 class="section-heading">How it works internally</h2>
+						<p>This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature.</p>
+						<img src="assets/images/code-flow.png" alt="CarrierJs - code flow" style="width: 100%" />
+					</section><!--//section-->
+
+				    <section class="docs-section" id="installation">
+						<h2 class="section-heading">Installation</h2>
+
+						<!-- Using NPM -->
+						<h5>Using NPM</h5>
+						<pre class="code-area">
+						<code>npm install --save carrierjs</code>
+						</pre>
+						<br>
+						<!-- Using Github CDN -->
+						<h5>Using Github CDN</h5>
+						<pre class="code-area">
+						<code>&lt;script src="https://theritikchoure.github.io/carrierjs/carrier.js"&gt;</code>
+						</pre>
+						<br>
+						<!-- Using jsDelivr CDN -->
+						<h5>Using jsDelivr CDN</h5>
+						<pre class="code-area">
+						<code>&lt;script src="https://cdn.jsdelivr.net/npm/carrierjs@1/carrier.min.js"&gt;</code>
+						</pre>
+						<br>
+						<!-- Using unpkg CDN -->
+						<h5>Using unpkg CDN</h5>
+						<pre class="code-area">
+						<code>&lt;script src="https://unpkg.com/carrierjs@1.0.1/carrier.js"&gt;</code>
+						</pre>
+					</section><!--//section-->
+					
+				
+					<section class="docs-section" id="examples">
+						<h2 class="section-heading">Examples</h2>
+
+						<p><strong>Performing a <span>GET</span> request:</strong></p>
+        
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  // Using Promise
+  carrier.get('/todos').then((result) => {
+   	console.log(result)
+  }).catch((err) => {
+	console.log(err)
+  });
+
+  ---------
+
+  // Using Async/Await
+  async function getUser() {
+ 	try {
+	  const response = await carrier.get('/todos')
+	  console.log(response);
+	} catch (error) {
+	  console.error(error);
+	}
+  }
+							</code></pre>
+						</div><!--//docs-code-block-->
+					</section><!--//section-->
+					
+					<section class="docs-section" id="request-method-aliases">
+						<h2 class="section-heading">Request Method Aliases</h2>
+						<p>For your ease, aliases have been provided for request methods.</p>
+						<ul class="line-height-30">
+							<li><b>carrier.get(url, [refresh])</b></li>
+							<li><b>carrier.post(url, [data])</b></li>
+							<li><b>carrier.put(url, [data])</b></li>
+							<li><b>carrier.delete(url, [data])</b></li>
+						</ul>
+						<p><b>Note -</b> While using this methods, <code>url</code> is required and <code>data</code> is optional. <code>refresh</code> is by default <code>false</code>. If you want to get fresh data everytime from the server, you need to send <code>true</code> after <code>url</code> parameter.</p>
+					</section><!--//section-->
+					
+					<section class="docs-section" id="response-object">
+						<h2 class="section-heading">Response Object</h2>
+						<p>The response for a request contains the following information.</p>
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+{
+	// `response` is the response that was provided by the server
+	response: {},
+	
+	// `status` is the HTTP status code from the server response
+	status: 200,
+	
+	// `type` is the type of response recieved from the server eg. json, script
+	type: '',
+	
+	// `headers` the HTTP headers that the server responded with headers
+	headers: {},
+	
+	// `config` is the config that was provided to `carrierjs` for the request
+	config: {},
+	
+	// `request` is the request that generated this response
+	request: {}
+	
+	// `url` is the url to that request is generated
+	url: {}
+}
+							</code></pre>
+						</div><!--//docs-code-block-->
+					</section><!--//section-->
+				
+					<!-- <section class="docs-section" id="item-1-6">
+						<h2 class="section-heading">Section Item 1.6</h2>
+						<p>Vivamus efficitur fringilla ullamcorper. Cras condimentum condimentum mauris, vitae facilisis leo. Aliquam sagittis purus nisi, at commodo augue convallis id. Sed interdum turpis quis felis bibendum imperdiet. Mauris pellentesque urna eu leo gravida iaculis. In fringilla odio in felis ultricies porttitor. Donec at purus libero. Vestibulum libero orci, commodo nec arcu sit amet, commodo sollicitudin est. Vestibulum ultricies malesuada tempor.</p>
+					</section>//section -->
+					
+			    </article>
+			    
+			    <footer class="footer">
+				    <div class="container text-center py-5">
+				        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+			            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+				        <ul class="social-list list-unstyled pt-4 mb-0">
+							<li class="list-inline-item"><a href="https://www.npmjs.com/package/carrierjs" target="_blank"><i class="fab fa-npm fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="https://github.com/theritikchoure/carrierjs" target="_blank"><i class="fab fa-github fa-fw"></i></a></li>
+							<li class="list-inline-item"><a href="https://twitter.com/carrier_js" target="_blank"><i class="fab fa-twitter fa-fw"></i></a></li>			
+						</ul><!--//social-list-->
+				    </div>
+			    </footer>
+		    </div> 
+	    </div>
+    </div><!--//docs-wrapper-->
+   
+       
+    <!-- Javascript -->          
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+    
+    
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script> -->
+    <script src="assets/plugins/highlights.js"></script>
+    <script src="assets/js/highlight-custom.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/js/docs.js"></script> 
+
+</body>
+</html> 
+
