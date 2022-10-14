@@ -30,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/theritikchoure/carrierjs/issues"
   },
-  "homepage": "https://theritikchoure.github.io/carrierjs/doc/",
-  "dependencies": {
-    "carrierjs": "^2.2.1"
-  }
+  "homepage": "https://theritikchoure.github.io/carrierjs/doc/"
 }
