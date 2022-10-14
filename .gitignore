@@ -1,3 +1,6 @@
 
 doc/assets/css/.DS_Store
 doc/assets/fontawesome/.DS_Store
+
+test/node_modules
+test/package-lock.json
