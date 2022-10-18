@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CarrierJs - Testing Page</title>
+    <link rel="stylesheet" href="style/mocha.css" />
+  </head>
+  <body>
+    <!-- 1. Placeholder node that will contain the test results -->
+    <div id="mocha"></div>
+
+    <!-- 3. Library -->
+    <script src="../carrier.js"></script>
+
+    <!-- 4. Test libraries -->
+    <script src="scripts/chai.js"></script>
+    <script src="scripts/mocha.js"></script>
+
+    <!-- 5. Tests -->
+    <script src="tests/index.test.js"></script>
+
+    <!-- 6. Run tests -->
+    <script type="text/javascript">
+      mocha.run();
+    </script>
+  </body>
+</html>
