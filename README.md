@@ -1,10 +1,10 @@
 ![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/Carrier.Js.png)
 
-# Carrier JS 
+# Carrier JS
 
 > Carrier JS is a **caching** based http client for browsers. It has the ability to store copies of frequently accessed data in several places along the request-response path. It deliver cached responses for common requests and helps to access data in a quick and inexpensive manner..
 
-[![NPM](https://img.shields.io/npm/v/carrierjs.svg)](https://www.npmjs.com/package/carrierjs)  [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![](https://data.jsdelivr.com/v1/package/npm/carrierjs/badge)](https://www.jsdelivr.com/package/npm/carrierjs) [![install size](https://packagephobia.com/badge?p=carrierjs)](https://packagephobia.com/result?p=carrierjs)
+[![NPM](https://img.shields.io/npm/v/carrierjs.svg)](https://www.npmjs.com/package/carrierjs) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![](https://data.jsdelivr.com/v1/package/npm/carrierjs/badge)](https://www.jsdelivr.com/package/npm/carrierjs) [![install size](https://packagephobia.com/badge?p=carrierjs)](https://packagephobia.com/result?p=carrierjs)
 
 [![NPM](https://nodei.co/npm/carrierjs.png)](https://nodei.co/npm/carrierjs/)
 
@@ -25,19 +25,19 @@
 
 ## Why CarrierJs
 
-Duplicate API requests are common and if dealt wisely,  can help developers in creating a seamless user experience. In a scalable application, duplicate API requests can be problematic to the resources on a server, can affect the cost, and can interrupt performance.
+Duplicate API requests are common and if dealt wisely, can help developers in creating a seamless user experience. In a scalable application, duplicate API requests can be problematic to the resources on a server, can affect the cost, and can interrupt performance.
 
 That is why it is important to pay attention to API calls and ensure that no duplicate request is passed to the API server.
 
 **Possible Reasons for duplicate API requests -**
 
-There can be different scenarios where an API is called multiple times to get the data. For example, 
+There can be different scenarios where an API is called multiple times to get the data. For example,
 
 - When a user taps on a button multiple times before it gets disabled.
 
 - At times, one API response causes another API request to execute. Let’s understand this with an analogy. There are several books with the same author details. As the details of the book get loaded, another requests to load the author's details is passed consequently. In this scenario, the request for multiple book details can hit the author's details API (while one is already under execution).
 
-- API requests on scroll events can hit an API multiple times as the scroll event triggers rapidly. 
+- API requests on scroll events can hit an API multiple times as the scroll event triggers rapidly.
 
 ![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/carrierjs-multiple-api-call.png)
 
@@ -49,9 +49,9 @@ First it checks to see whether data exists in the cache. If it exists, it return
 
 Then it write to the cache and return the data as response. The subsequent requests will be served through the cache.
 
-If you want fresh data everytime from the API server, you can pass a extra parameter called ```refresh``` with value ```true``` after the API server url.
+If you want fresh data everytime from the API server, you can pass a extra parameter called `refresh` with value `true` after the API server url.
 
-This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature. 
+This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature.
 
 ![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/code-flow.png)
 
@@ -74,9 +74,9 @@ There are several benefits of caching your API’s response. Here are some of th
 
 ## Browser Support
 
-| Chrome | Edge  | Firefox | Opera | Safari 
---- | --- | ---| ---| ---| 
-|✅|✅|✅|✅|✅|
+| Chrome | Edge | Firefox | Opera | Safari |
+| ------ | ---- | ------- | ----- | ------ |
+| ✅     | ✅   | ✅      | ✅    | ✅     |
 
 ## Installation
 
@@ -104,9 +104,7 @@ npm install --save carrierjs
 <script src="https://unpkg.com/carrierjs@1.0.1/carrier.js">
 ```
 
-
 ## Examples
-
 
 **Performing a GET request:**
 
@@ -131,6 +129,7 @@ async function getUser() {
   }
 }
 ```
+
 **Performing a POST request:**
 
 ```jsx
@@ -228,17 +227,17 @@ The response for a request contains the following information.
 
   // `request` is the request that generated this response
   request: {}
-  
+
   // `url` is the url to that request is generated
   url: {}
 }
 ```
+
 ## Follow on twitter
 
 <a class="twitter-follow-button"
   href="https://twitter.com/carrier_js">
 Follow @carrier_js</a>
-
 
 ## Contribution
 
@@ -277,3 +276,9 @@ For more information, Please read [CONTRIBUTING.md](https://github.com/theritikc
 ## License
 
 This package is licensed under the MIT license © [theritikchoure](https://github.com/theritikchoure)
+
+## Thanks to all Contributors
+
+<a href="https://github.com/theritikchoure/carrierjs/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=theritikchoure/carrierjs" />
+</a>
