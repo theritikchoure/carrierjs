@@ -233,15 +233,7 @@ The response for a request contains the following information.
 }
 ```
 
-## Follow on twitter
-
-<a class="twitter-follow-button"
-  href="https://twitter.com/carrier_js">
-Follow @carrier_js</a>
-
 ## Contribution
-
-### Getting Started
 
 **Note** - Give a ⭐ to this project
 
@@ -249,7 +241,7 @@ Follow @carrier_js</a>
 - Clone your fork down to your local machine
 
 ```bash
-git clone https://github.com/your-username/hacktoberfest.git
+git clone https://github.com/your-username/carrierjs.git
 ```
 
 - Create a branch
