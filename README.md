@@ -6,6 +6,8 @@
 
 [![NPM](https://img.shields.io/npm/v/carrierjs.svg)](https://www.npmjs.com/package/carrierjs) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![](https://data.jsdelivr.com/v1/package/npm/carrierjs/badge)](https://www.jsdelivr.com/package/npm/carrierjs) [![install size](https://packagephobia.com/badge?p=carrierjs)](https://packagephobia.com/result?p=carrierjs)
 
+![Twitter URL](https://img.shields.io/twitter/url?label=Follow%20%40fold_left&style=social&url=https%3A%2F%2Ftwitter.com%2Fcarrier_js)
+
 [![NPM](https://nodei.co/npm/carrierjs.png)](https://nodei.co/npm/carrierjs/)
 
 ## Table of Contents
