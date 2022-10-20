@@ -1,0 +1,28 @@
+body {
+    color: black;
+    background-color: aliceblue;
+}
+
+#mocha .suite {
+    line-height: 30px;
+}
+
+#mocha-stats {
+    color: #000;
+}
+
+#mocha-stats em{
+    color: black
+}
+
+#mocha h2 {
+    font-size: 14px;
+}
+
+#mocha-stats canvas {
+    display: none;
+}
+
+#mocha .test.fail pre {
+    color: black;
+}
