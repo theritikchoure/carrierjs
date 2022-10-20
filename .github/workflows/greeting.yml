@@ -1,0 +1,27 @@
+name: Greetings
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened,closed]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet  Contributors for Creating New Issues.
+        uses: peter-evans/create-or-update-comment@v1
+        if: github.event_name == 'issues'
+        with:
+          issue-number: ${{tojson(github.event.issue.number)}}
+          body: |
+            @${{ github.actor }} Thank you for taking your time and effort for your contribution, we truly value it. Happy Learning!❤️
+          
+      - name: Greet New Contributors for Creating New PR/Issues.
+        uses: peter-evans/create-or-update-comment@v1
+        if: github.event.action =='opened' && github.event_name == 'pull_request'
+        with:
+          issue-number: ${{tojson(github.event.number)}}
+          body: |
+            @${{ github.actor }} Thank you for taking your time and effort for your contribution, we truly value it. Happy Learning!❤️
