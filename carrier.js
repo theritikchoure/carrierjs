@@ -271,7 +271,46 @@ let carrier = {
 
         return promise;
     },
+    patch: function(url, data = null, options = {}) {
+        let promise = new Promise((resolve, reject) =>{
+            if(helpers.isEmpty(url)) {
+                displayErrorMessage('Url is required to make request');
+                return;
+            }
 
+            let req = new XMLHttpRequest();
+            req.responseType = 'json';
+            req.open("PATCH", url);
+
+            if(options.headers) {
+                handleOptions.setRequestHeader(req, options.headers);
+            }
+
+            req.send(JSON.stringify(data) || null);
+
+            req.onload = () => {
+                // Response Object
+                const res = {
+                    response: req.response,
+                    headers: helpers.getAllResponseHeaders(req),
+                    request: req.readyState,
+                    url: req.responseURL,
+                    status: req.status,
+                    type: 'json'
+                };
+
+                if(req.status === 200 || req.status === 201) {
+                    resolve(res);
+                }
+
+                if(req.status === 404) {
+                    reject(res);
+                }
+            }
+        });
+
+        return promise;
+    },
     delete: function(url, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
             if(helpers.isEmpty(url)) {
