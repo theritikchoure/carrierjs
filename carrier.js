@@ -273,7 +273,7 @@ let carrier = {
     },
     patch: function(url, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
-            if(isEmpty(url)) {
+            if(helpers.isEmpty(url)) {
                 displayErrorMessage('Url is required to make request');
                 return;
             }
@@ -281,16 +281,18 @@ let carrier = {
             let req = new XMLHttpRequest();
             req.responseType = 'json';
             req.open("PATCH", url);
-            req.setRequestHeader('Content-Type', 'application/json');
+
+            if(options.headers) {
+                handleOptions.setRequestHeader(req, options.headers);
+            }
 
             req.send(JSON.stringify(data) || null);
 
             req.onload = () => {
                 // Response Object
                 const res = {
-                    config: '',
                     response: req.response,
-                    headers: req.getAllResponseHeaders(),
+                    headers: helpers.getAllResponseHeaders(req),
                     request: req.readyState,
                     url: req.responseURL,
                     status: req.status,
@@ -303,12 +305,6 @@ let carrier = {
 
                 if(req.status === 404) {
                     reject(res);
-                }
-            }
-
-            req.onreadystatechange = () => {
-                if(req.readyState === 4 && req.status === 404) {
-                    // TODO
                 }
             }
         });
