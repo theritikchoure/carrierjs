@@ -2,7 +2,7 @@
 
 # Carrier JS
 
-> Carrier JS is a **caching** based http client for browsers. It has the ability to store copies of frequently accessed data in several places along the request-response path. It deliver cached responses for common requests and helps to access data in a quick and inexpensive manner..
+> Carrier JS is a **caching** based HTTP client for browsers. It has the ability to store copies of frequently accessed data in several places along the request-response path. It deliver cached responses for common requests and helps to access data  quickly and inexpensively.
 
 [![NPM](https://img.shields.io/npm/v/carrierjs.svg)](https://www.npmjs.com/package/carrierjs) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![](https://data.jsdelivr.com/v1/package/npm/carrierjs/badge)](https://www.jsdelivr.com/package/npm/carrierjs) [![install size](https://packagephobia.com/badge?p=carrierjs)](https://packagephobia.com/result?p=carrierjs) [![Twitter Follow](https://img.shields.io/twitter/follow/carrier_js?label=Follow%20%40carrier_js&style=social)](https://twitter.com/carrier_js) [![Featured on Openbase](https://badges.openbase.com/js/featured/carrierjs.svg?style=openbase)](https://openbase.com/js/carrierjs?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
 
@@ -45,13 +45,13 @@ To prevent from the duplicate API requests, **CarrierJs** comes into the picture
 
 ## How it works internally
 
-First it checks to see whether data exists in the cache. If it exists, it return data from the cache as response. If it doesn't exists then it reaad data from the API server.
+First, it checks to see whether data exists in the cache. If it exists, it returns data from the cache as a response. If it doesn't exist then it read data from the API server.
 
-Then it write to the cache and return the data as response. The subsequent requests will be served through the cache.
+Then it writes to the cache and returns the data as response. The subsequent requests will be served through the cache.
 
-If you want fresh data everytime from the API server, you can pass a extra parameter called `refresh` with value `true` after the API server url.
+If you want fresh data everytime from the API server, you can pass an extra parameter called `refresh` with value `true` after the API server url.
 
-This diagram shows how carrierjs internally fulfill the request with its ultimate caching feature.
+This diagram shows how carrierjs internally fulfills the request with its ultimate caching feature.
 
 ![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/code-flow.png)
 
