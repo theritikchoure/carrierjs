@@ -1,189 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>CarrierJs - Promise based HTTP client with ultimate caching</title>
 
-    <!-- Meta -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Carrier JS is promise based http client for browsers. It is used to interact with servers with ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing."
-    />
-    <meta name="author" content="Ritik Chourasiya" />
-    <link rel="shortcut icon" href="assets/images/carrierjs-favicon.png" />
+<head>
+  <title>CarrierJs - Promise based HTTP client with ultimate caching</title>
 
-    <!-- Open Graph -->
-    <meta
-      property="og:title"
-      content="CarrierJs - Promise based HTTP client with ultimate caching"
-    />
-    <meta property="og:site_name" content="CarrierJs" />
-    <meta
-      property="og:url"
-      content="https://theritikchoure.github.io/carrierjs/doc/"
-    />
-    <meta
-      property="og:description"
-      content="Carrier JS is promise based http client for browsers. It is used to interact with servers with the ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh."
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="https://theritikchoure.github.io/carrierjs/doc/assets/images/Carrier.Js.png"
-    />
+  <!-- Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Carrier JS is promise based http client for browsers. It is used to interact with servers with ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing." />
+  <meta name="author" content="Ritik Chourasiya" />
+  <link rel="shortcut icon" href="assets/images/carrierjs-favicon.png" />
 
-    <!-- Google Font -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet"> -->
-    <link rel="stylesheet" href="assets/fonts/poppins.css" />
-    <!-- FontAwesome JS-->
-    <script defer src="assets/fontawesome/js/all.min.js"></script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="CarrierJs - Promise based HTTP client with ultimate caching" />
+  <meta property="og:site_name" content="CarrierJs" />
+  <meta property="og:url" content="https://theritikchoure.github.io/carrierjs/doc/" />
+  <meta property="og:description"
+    content="Carrier JS is promise based http client for browsers. It is used to interact with servers with the ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://theritikchoure.github.io/carrierjs/doc/assets/images/Carrier.Js.png" />
 
-    <!-- Theme CSS -->
-    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
+  <!-- Google Font -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet"> -->
+  <link rel="stylesheet" href="assets/fonts/poppins.css" />
+  <!-- FontAwesome JS-->
+  <script defer src="assets/fontawesome/js/all.min.js"></script>
 
-  <body>
-    <header class="header fixed-top">
-      <div class="branding docs-branding">
-        <div class="container-fluid position-relative py-2">
-          <div class="docs-logo-wrapper">
-            <div class="site-logo">
-              <a class="navbar-brand" href="index.html"
-                ><img
-                  class="logo-icon me-2"
-                  src="assets/images/carrierjs-logo.png"
-                  alt="logo"
-                /><span class="logo-text"
-                  >Carrier<span class="text-alt">JS</span></span
-                ></a
-              >
-            </div>
+  <!-- Theme CSS -->
+  <link id="theme-style" rel="stylesheet" href="assets/css/theme.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <header class="header fixed-top">
+    <div class="branding docs-branding">
+      <div class="container-fluid position-relative py-2">
+        <div class="docs-logo-wrapper">
+          <div class="site-logo">
+            <a class="navbar-brand" href="index.html"><img class="logo-icon me-2" src="assets/images/carrierjs-logo.png"
+                alt="logo" /><span class="logo-text">Carrier<span class="text-alt">JS</span></span></a>
           </div>
-          <!--//docs-logo-wrapper-->
-          <div
-            class="docs-top-utilities d-flex justify-content-end align-items-center"
-          >
-            <ul
-              class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex"
-            >
-              <li class="list-inline-item">
-                <a
-                  href="https://www.npmjs.com/package/carrierjs"
-                  target="_blank"
-                  ><i class="fab fa-npm fa-fw"></i
-                ></a>
-              </li>
-              <li class="list-inline-item">
-                <a
-                  href="https://github.com/theritikchoure/carrierjs"
-                  target="_blank"
-                  ><i class="fab fa-github fa-fw"></i
-                ></a>
-              </li>
-              <li class="list-inline-item">
-                <a href="https://twitter.com/carrier_js" target="_blank"
-                  ><i class="fab fa-twitter fa-fw"></i
-                ></a>
-              </li>
-            </ul>
-            <!--//social-list-->
-            <a href="index.html" class="btn btn-primary d-none d-lg-flex"
-              >Home</a
-            >
-          </div>
-          <!--//docs-top-utilities-->
         </div>
-        <!--//container-->
-      </div>
-      <!--//branding-->
-    </header>
-    <!--//header-->
-
-    <div class="page-header theme-bg-dark py-5 text-center position-relative">
-      <div class="theme-bg-shapes-right"></div>
-      <div class="theme-bg-shapes-left"></div>
-      <div class="container">
-        <h1 class="page-heading single-col-max mx-auto">
-          Contributors of Carrier JS
-        </h1>
-      </div>
-    </div>
-    <!--//page-header-->
-    <div class="page-content">
-      <div class="container">
-        <div class="docs-overview py-5">
-          <h5><span class="card-title-text">Contributors</span></h5>
-          <ol class="line-height-30">
-            <li>
-              <a href="https://github.com/theritikchoure" target="_blank"
-                >Ritik Chourasiya</a
-              >
+        <!--//docs-logo-wrapper-->
+        <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+          <ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+            <li class="list-inline-item">
+              <a href="https://www.npmjs.com/package/carrierjs" target="_blank"><i class="fab fa-npm fa-fw"></i></a>
             </li>
-            <li>
-              <a href="https://github.com/DarkSoul26" target="_blank"
-                >Sanchit Kalsi</a
-              >
+            <li class="list-inline-item">
+              <a href="https://github.com/theritikchoure/carrierjs" target="_blank"><i
+                  class="fab fa-github fa-fw"></i></a>
             </li>
-          </ol>
+            <li class="list-inline-item">
+              <a href="https://twitter.com/carrier_js" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+            </li>
+          </ul>
+          <!--//social-list-->
+          <a href="index.html" class="btn btn-primary d-none d-lg-flex">Home</a>
         </div>
-        <!--//container-->
+        <!--//docs-top-utilities-->
       </div>
       <!--//container-->
     </div>
-    <!--//page-content-->
+    <!--//branding-->
+  </header>
+  <!--//header-->
 
-    <footer class="footer">
-      <div class="footer-bottom text-center py-5">
-        <ul class="social-list list-unstyled pb-4 mb-0">
-          <li class="list-inline-item">
-            <a href="https://www.npmjs.com/package/carrierjs" target="_blank"
-              ><i class="fab fa-npm fa-fw"></i
-            ></a>
+  <div class="page-header theme-bg-dark py-5 text-center position-relative">
+    <div class="theme-bg-shapes-right"></div>
+    <div class="theme-bg-shapes-left"></div>
+    <div class="container">
+      <h1 class="page-heading single-col-max mx-auto">
+        Contributors of Carrier JS
+      </h1>
+    </div>
+  </div>
+  <!--//page-header-->
+  <div class="page-content">
+    <div class="container">
+      <div class="docs-overview py-5">
+        <h5><span class="card-title-text">Contributors</span></h5>
+        <ol class="line-height-30">
+          <li>
+            <a href="https://github.com/theritikchoure" target="_blank">Ritik Chourasiya</a>
           </li>
-          <li class="list-inline-item">
-            <a
-              href="https://github.com/theritikchoure/carrierjs"
-              target="_blank"
-              ><i class="fab fa-github fa-fw"></i
-            ></a>
+          <li>
+            <a href="https://github.com/DarkSoul26" target="_blank">Sanchit Kalsi</a>
           </li>
-          <li class="list-inline-item">
-            <a href="https://twitter.com/carrier_js" target="_blank"
-              ><i class="fab fa-twitter fa-fw"></i
-            ></a>
+          <li>
+            <a href="https://github.com/tamalchowdhury" target="_blank"> Tamal Chowdhury</a>
           </li>
-        </ul>
-        <!--//social-list-->
+          <li>
+            <a href="https://github.com/Pragya2056" target="_blank">Pragya Sapkota</a>
+          </li>
+          <li>
+            <a href="https://github.com/najeebkp" target="_blank">Najeeb Thangal KP</a>
+          </li>
 
-        <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-        <small class="copyright"
-          >Designed with <span class="sr-only">love</span
-          ><i class="fas fa-heart" style="color: #fb866a"></i> by
-          <a
-            class="theme-link"
-            href="http://themes.3rdwavemedia.com"
-            target="_blank"
-            >Xiaoying Riley</a
-          >
-          for developers</small
-        >
+          <li>
+            <a href="https://github.com/Saikatssd" target="_blank">Saikat Sundar Das</a>
+          </li>
+
+
+          <li>
+            <a href="https://github.com/thecyberera" target="_blank">Deepanshu</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/helloshiv01" target="_blank">helloshiv01</a>
+          </li>
+        </ol>
       </div>
-    </footer>
+      <!--//container-->
+    </div>
+    <!--//container-->
+  </div>
+  <!--//page-content-->
 
-    <!-- Javascript -->
-    <script src="assets/plugins/popper.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <footer class="footer">
+    <div class="footer-bottom text-center py-5">
+      <ul class="social-list list-unstyled pb-4 mb-0">
+        <li class="list-inline-item">
+          <a href="https://www.npmjs.com/package/carrierjs" target="_blank"><i class="fab fa-npm fa-fw"></i></a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://github.com/theritikchoure/carrierjs" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://twitter.com/carrier_js" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+        </li>
+      </ul>
+      <!--//social-list-->
 
-    <!-- Page Specific JS -->
-    <script src="assets/plugins/smoothscroll.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script> -->
-    <script src="assets/plugins/highlights.js"></script>
-    <script src="assets/js/highlight-custom.js"></script>
-    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>
-    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
-    <script src="assets/js/docs.js"></script>
-  </body>
+      <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+      <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart"
+          style="color: #fb866a"></i> by
+        <a class="theme-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a>
+        for developers</small>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+  <script src="assets/plugins/popper.min.js"></script>
+  <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Page Specific JS -->
+  <script src="assets/plugins/smoothscroll.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script> -->
+  <script src="assets/plugins/highlights.js"></script>
+  <script src="assets/js/highlight-custom.js"></script>
+  <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>
+  <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+  <script src="assets/js/docs.js"></script>
+</body>
+
 </html>
