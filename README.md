@@ -214,16 +214,13 @@ The response for a request contains the following information.
   response: {},
 
   // `status` is the HTTP status code from the server response
-  status: 200,
+  status: statusCode,
 
   // `type` is the type of response recieved from the server eg. json, script
   type: '',
 
   // `headers` the HTTP headers that the server responded with headers
   headers: {},
-
-  // `config` is the config that was provided to `carrierjs` for the request
-  config: {},
 
   // `request` is the request that generated this response
   request: {}

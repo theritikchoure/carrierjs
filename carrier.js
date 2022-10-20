@@ -8,8 +8,31 @@
 "use strict";
 let db = null;
 
-let isEmpty = (a) => {
-    if(a === undefined || a === null || a.length === 0) return true;
+let helpers = {
+    isObjectEmpty: (object = {}) => {
+        return Object.keys(object).length === 0 && object.constructor === Object;
+    },
+
+    isEmpty: (a) => {
+        if(a === undefined || a === null || a.length === 0) return true;
+        else return false;
+    },
+
+    getAllResponseHeaders: (req = {}) => {
+        if(helpers.isObjectEmpty(req)) return req;
+
+        let resHeaders = req.getAllResponseHeaders();
+        let sendHeaders = {};
+        
+        var resultArr = resHeaders.split('\r\n');
+
+        resultArr.forEach((header) => {
+            let headerArr = header.split(': ');
+            if(headerArr.length > 1) sendHeaders[headerArr[0]] = headerArr[1];
+        });
+
+        return sendHeaders;
+    }
 }
 
 let displayErrorMessage = (message) => {
@@ -17,90 +40,106 @@ let displayErrorMessage = (message) => {
     return;
 }
 
-// create indexedDB instance
-let createIndexedDB = () => {
-    let promise = new Promise((resolve, reject) => {
-        const request = indexedDB.open('carrierjs');
+// Handle IndexedDb 
+let DB = {
+    // create indexedDB instance
+    createDB: () => {
+        let promise = new Promise((resolve, reject) => {
+            const request = indexedDB.open('carrierjs');
+    
+            //on upgrade needed
+            request.onupgradeneeded = e => {
+                db = e.target.result;
+                const responsesDB = db.createObjectStore("responses", {keyPath: "url"})
+            }
+    
+            //on success 
+            request.onsuccess = e => {
+                db = e.target.result;
+                // db.name = "responses";
+                resolve();
+            }
+    
+            //on error
+            request.onerror = e => {
+                console.log("onError", e);
+            }
+        });
+    
+        return promise;
+    },
 
-        //on upgrade needed
-        request.onupgradeneeded = e => {
-            db = e.target.result;
-            const responsesDB = db.createObjectStore("responses", {keyPath: "url"})
-        }
+    // check db has response data, if yes then return it;
+    hasResponse: (url = null) => {
+        let promise = new Promise(function(resolve, reject) {
+            if(!url) {
+                displayErrorMessage("Invalid url");
+                return;
+            };
+    
+            const tx = db.transaction("responses","readonly")
+            const requestStore = tx.objectStore("responses")
+            const request = requestStore.get(url);
+            let res = undefined;
+            request.onsuccess = e => {
+    
+                res = e.target.result;
+                resolve(res);
+            };
+        });
+    
+        return promise;
+    },
 
-        //on success 
-        request.onsuccess = e => {
-            db = e.target.result;
-            // db.name = "responses";
-            resolve();
-        }
+    // add response to db, and return it;
+    addResponse: (response) => {
+        let promise = new Promise(function(resolve, reject) {
+    
+            const tx = db.transaction("responses", "readwrite")
+            tx.onerror = e => console.log(e.target);
+            const responseStore = tx.objectStore("responses");
+            responseStore.add(response);
+            resolve(response);
+        });
+        return promise;
+    },
 
-        //on error
-        request.onerror = e => {
-            console.log("onError", e);
-        }
-    });
-
-    return promise;
+    // update response to db, and return it;
+    updateResponse: (response) => {
+        let promise = new Promise((resolve, reject) => {
+            const tx = db.transaction("responses", "readwrite")
+            tx.onerror = e => console.log(e.target);
+            const responseStore = tx.objectStore("responses");
+            responseStore.put(response);
+            resolve(response);
+        });
+    
+        return promise;
+    },
 }
 
-// check db has response data, if yes then return it;
-let dbHasResponse = (url = null) => {
-    let promise = new Promise(function(resolve, reject) {
-        if(!url) {
-            displayErrorMessage("Invalid url");
-            return;
-        };
+let handleOptions = {
+    setRequestHeader: (req, headers = {}) => {
+        if(helpers.isObjectEmpty(headers)) return;
 
-        const tx = db.transaction("responses","readonly")
-        const requestStore = tx.objectStore("responses")
-        const request = requestStore.get(url);
-        let res = undefined;
-        request.onsuccess = e => {
-
-            res = e.target.result;
-            resolve(res);
-        };
-    });
-
-    return promise;
+        for (const header in headers) {
+            req.setRequestHeader(header, headers[header]);
+        }
+    }
 }
-
-let addResponseToDB = (response) => {
-    let promise = new Promise(function(resolve, reject) {
-
-        const tx = db.transaction("responses", "readwrite")
-        tx.onerror = e => console.log(e.target);
-        const responseStore = tx.objectStore("responses");
-        responseStore.add(response);
-        resolve(response);
-    });
-    return promise;
-};
-
-let updateResponseToDB = (object) => {
-    let promise = new Promise((resolve, reject) => {
-        const tx = db.transaction("responses", "readwrite")
-        tx.onerror = e => console.log(e.target);
-        const responseStore = tx.objectStore("responses");
-        responseStore.put(object);
-        resolve(object);
-    });
-
-    return promise;
-};
 
 let carrier = {
-    get: function(url, refresh = false) {
+    get: function(url, refresh = false, options = {}) {
+
         let promise = new Promise(async (resolve, reject) =>{
 
-            if(isEmpty(url)) {
+            if(helpers.isEmpty(url)) {
                 displayErrorMessage('Url is required to make request');
                 return;
             }
 
-            await createIndexedDB();
-            let response = await dbHasResponse(url);
+            await DB.createDB();
+            let response = await DB.hasResponse(url);
 
             if(!refresh && response) {
                 resolve(response);
@@ -109,6 +148,9 @@ let carrier = {
                 let req = new XMLHttpRequest();
                 req.responseType = 'json';
                 req.open("GET", url);
+                if(options.headers) {
+                    handleOptions.setRequestHeader(req, options.headers);
+                }
 
                 req.send();
 
@@ -116,9 +158,8 @@ let carrier = {
 
                     // Response Object
                     const res = {
-                        config: '',
                         response: req.response,
-                        headers: req.getAllResponseHeaders(),
+                        headers: helpers.getAllResponseHeaders(req),
                         request: req.readyState,
                         url: req.responseURL,
                         status: req.status,
@@ -128,11 +169,11 @@ let carrier = {
                     if(req.status === 200) {
 
                         if(response) {
-                            await updateResponseToDB(res);
+                            await DB.updateResponse(res);
                         }
                         
                         if(!response) {
-                            await addResponseToDB(res);
+                            await DB.addResponse(res);
                         }
 
                         resolve(res);
@@ -142,22 +183,16 @@ let carrier = {
                         reject(new Error('Url not Found'));
                     }
                 }
-
-                req.onreadystatechange = () => {
-                    if(req.readyState === 4 && req.status === 404) {
-                        // TODO
-                    }
-                }
-
             }
         });
 
         return promise;
     },
-    post: function(url, data = null) {
+
+    post: function(url, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
 
-            if(isEmpty(url)) {
+            if(helpers.isEmpty(url)) {
                 displayErrorMessage('Url is required to make request');
                 return;
             }
@@ -165,16 +200,18 @@ let carrier = {
             let req = new XMLHttpRequest();
             req.responseType = 'json';
             req.open("POST", url);
-            req.setRequestHeader('Content-Type', 'application/json');
+
+            if(options.headers) {
+                handleOptions.setRequestHeader(req, options.headers);
+            }
 
             req.send(JSON.stringify(data) || null);
 
             req.onload = () => {
                 // Response Object
                 const res = {
-                    config: '',
                     response: req.response,
-                    headers: req.getAllResponseHeaders(),
+                    headers: helpers.getAllResponseHeaders(req),
                     request: req.readyState,
                     url: req.responseURL,
                     status: req.status,
@@ -189,19 +226,14 @@ let carrier = {
                     reject(res);
                 }
             }
-
-            req.onreadystatechange = () => {
-                if(req.readyState === 4 && req.status === 404) {
-                    // TODO
-                }
-            }
         });
 
         return promise;
     },
-    put: function(url, data = null) {
+    
+    put: function(url, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
-            if(isEmpty(url)) {
+            if(helpers.isEmpty(url)) {
                 displayErrorMessage('Url is required to make request');
                 return;
             }
@@ -209,16 +241,18 @@ let carrier = {
             let req = new XMLHttpRequest();
             req.responseType = 'json';
             req.open("PUT", url);
-            req.setRequestHeader('Content-Type', 'application/json');
+
+            if(options.headers) {
+                handleOptions.setRequestHeader(req, options.headers);
+            }
 
             req.send(JSON.stringify(data) || null);
 
             req.onload = () => {
                 // Response Object
                 const res = {
-                    config: '',
                     response: req.response,
-                    headers: req.getAllResponseHeaders(),
+                    headers: helpers.getAllResponseHeaders(req),
                     request: req.readyState,
                     url: req.responseURL,
                     status: req.status,
@@ -233,17 +267,11 @@ let carrier = {
                     reject(res);
                 }
             }
-
-            req.onreadystatechange = () => {
-                if(req.readyState === 4 && req.status === 404) {
-                    // TODO
-                }
-            }
         });
 
         return promise;
     },
-    patch: function(url, data = null) {
+    patch: function(url, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
             if(isEmpty(url)) {
                 displayErrorMessage('Url is required to make request');
@@ -287,9 +315,9 @@ let carrier = {
 
         return promise;
     },
-    delete: function(url, data = null) {
+    delete: function(url, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
-            if(isEmpty(url)) {
+            if(helpers.isEmpty(url)) {
                 displayErrorMessage('Url is required to make request');
                 return;
             }
@@ -297,16 +325,18 @@ let carrier = {
             let req = new XMLHttpRequest();
             req.responseType = 'json';
             req.open("DELETE", url);
-            req.setRequestHeader('Content-Type', 'application/json');
+            
+            if(options.headers) {
+                handleOptions.setRequestHeader(req, options.headers);
+            }
 
             req.send(JSON.stringify(data) || null);
 
             req.onload = () => {
                 // Response Object
                 const res = {
-                    config: '',
                     response: req.response,
-                    headers: req.getAllResponseHeaders(),
+                    headers: helpers.getAllResponseHeaders(req),
                     request: req.readyState,
                     url: req.responseURL,
                     status: req.status,
@@ -319,12 +349,6 @@ let carrier = {
 
                 if(req.status === 404) {
                     reject(res);
-                }
-            }
-
-            req.onreadystatechange = () => {
-                if(req.readyState === 4 && req.status === 404) {
-                    // TODO
                 }
             }
         });
@@ -343,6 +367,6 @@ let carrier = {
     }
 
     (async () => {
-        await createIndexedDB();
+        await DB.createDB();
     })();
 }();

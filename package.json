@@ -1,6 +1,6 @@
 {
   "name": "carrierjs",
-  "version": "2.2.3",
+  "version": "2.3.0",
   "description": "Powerful and simple promise based HTTP client for the browser with ultimate caching",
   "main": "carrier.js",
   "author": "theritikchoure",
