@@ -1,4 +1,4 @@
-![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/Carrier.Js.png)
+![Flow of Carrierjs](./docs/assets/images/Carrier.Js.png)
 
 # Carrier JS
 
@@ -35,11 +35,11 @@ There can be different scenarios where an API is called multiple times to get th
 
 - When a user taps on a button multiple times before it gets disabled.
 
-- At times, one API response causes another API request to execute. Let’s understand this with an analogy. There are several books with the same author details. As the details of the book get loaded, another requests to load the author's details is passed consequently. In this scenario, the request for multiple book details can hit the author's details API (while one is already under execution).
+- At times, one API response causes another API request to execute. Let's understand this with an analogy. There are several books with the same author details. As the details of the book get loaded, another requests to load the author's details is passed consequently. In this scenario, the request for multiple book details can hit the author's details API (while one is already under execution).
 
 - API requests on scroll events can hit an API multiple times as the scroll event triggers rapidly.
 
-![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/carrierjs-multiple-api-call.png)
+![Flow of Carrierjs](./docs/assets/images/carrierjs-multiple-api-call.png)
 
 To prevent from the duplicate API requests, **CarrierJs** comes into the picture 👇.
 
@@ -53,11 +53,11 @@ If you want fresh data everytime from the API server, you can pass an extra para
 
 This diagram shows how carrierjs internally fulfills the request with its ultimate caching feature.
 
-![Flow of Carrierjs](https://theritikchoure.github.io/carrierjs/doc/assets/images/code-flow.png)
+![Flow of Carrierjs](./docs/assets/images/code-flow.png)
 
 ## Benefits
 
-There are several benefits of caching your API’s response. Here are some of them:
+There are several benefits of caching your API's response. Here are some of them:
 
 - Your quality of service improves.
 - The website consumes less bandwidth.
@@ -134,8 +134,8 @@ async function getUser() {
 
 ```jsx
 const data = {
-	title: "delectus aut autem",
-	completed: false
+    title: "delectus aut autem",
+    completed: false
 }
 
 // Using Promise
@@ -164,8 +164,8 @@ createUser(data);
 
 ```jsx
 const data = {
-	title: "delectus aut autem",
-	completed: false
+    title: "delectus aut autem",
+    completed: false
 }
 
 // Using Promise
@@ -264,7 +264,7 @@ For more information, Please read [CONTRIBUTING.md](https://github.com/theritikc
 
 ## License
 
-This package is licensed under the MIT license © [theritikchoure](https://github.com/theritikchoure)
+This package is licensed under the MIT license &copy; [theritikchoure](https://github.com/theritikchoure)
 
 ## Thanks to all Contributors
 
