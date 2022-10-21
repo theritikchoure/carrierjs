@@ -20,7 +20,7 @@ jobs:
           
       - name: Greet New Contributors for Creating New PR/Issues.
         uses: peter-evans/create-or-update-comment@v1
-        if: github.event.action =='opened' && github.event_name == 'pull_request'
+        if: github.event.action =='opened' && ( github.event_name == 'pull_request'  || github.event_name == 'pull_request_target')
         with:
           issue-number: ${{tojson(github.event.number)}}
           body: |
