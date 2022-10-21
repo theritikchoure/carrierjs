@@ -9,6 +9,7 @@ on:
 jobs:
   greeting:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - name: Greet  Contributors for Creating New Issues.
         uses: peter-evans/create-or-update-comment@v1
