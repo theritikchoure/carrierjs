@@ -92,14 +92,3 @@ var spy = new Gumshoe('#docs-nav a', {
 /*  Ref: https://github.com/andreknieriem/simplelightbox */
 
 var lightbox = new SimpleLightbox('.simplelightbox-gallery a', {/* options */});
-
-
-
-
-
-
-
-
-
-
-

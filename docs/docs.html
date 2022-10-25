@@ -81,6 +81,7 @@
 				    <li class="nav-item"><a class="nav-link scrollto" href="#installation">Installation</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#examples">Examples</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#request-method-aliases">Request method aliases</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#set-request-headers">Set Request Headers</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#response-object">Response Object</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#handling-errors">Handling Errors</a></li>
 				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="" onclick="return false;"><span class="theme-icon-holder me-2"><i class="fas fa-lightbulb"></i></span>Others</a></li>
@@ -101,7 +102,9 @@
 		    <div class="container">
 			    <article class="docs-article" id="introduction">
 				    <header class="docs-header">
-					    <h1 class="docs-heading">Introduction <span class="docs-time">Last updated: <span id="updated-time">2019-06-01</span></span></h1>
+					    <h1 class="docs-heading">Introduction 
+							<!-- <span class="docs-time">Last updated: <span id="updated-time">2019-06-01</span></span> -->
+						</h1>
 					    <section class="docs-intro">
 						    <p>
 								Carrier JS is promise based http client for browsers. It is used to interact with servers with ultimate caching feature. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
@@ -161,16 +164,16 @@
 						<code>npm install --save carrierjs</code>
 						</pre>
 						<br>
-						<!-- Using Github CDN -->
-						<h5>Using Github CDN</h5>
+						<!-- Using cdnjs -->
+						<h5>Using cdnjs CDN</h5>
 						<pre class="code-area">
-						<code>&lt;script src="https://theritikchoure.github.io/carrierjs/carrier.js"&gt;</code>
+						<code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/carrierjs/2.3.0/carrier.js"&gt;</code>
 						</pre>
 						<br>
 						<!-- Using jsDelivr CDN -->
 						<h5>Using jsDelivr CDN</h5>
 						<pre class="code-area">
-						<code>&lt;script src="https://cdn.jsdelivr.net/npm/carrierjs@1/carrier.min.js"&gt;</code>
+						<code>&lt;script src="https://cdn.jsdelivr.net/npm/carrierjs@2.3.0/carrier.js"&gt;</code>
 						</pre>
 						<br>
 						<!-- Using unpkg CDN -->
@@ -208,6 +211,98 @@
   }
 							</code></pre>
 						</div><!--//docs-code-block-->
+						<br>
+						<p><strong>Performing a <span>POST</span> request:</strong></p>
+        
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  const data = {
+	title: "delectus aut autem",
+	completed: false
+  }
+
+  // Using Promise
+  carrier.post('https://jsonplaceholder.typicode.com/todos', data).then((result) => {
+	console.log(result)
+  }).catch((err) => {
+	console.log(err)
+  });
+
+  ---------
+
+  // Using Async/Await
+  async function createUser(data) {
+	try {
+	const response = await carrier.post('https://jsonplaceholder.typicode.com/todos', data)
+	console.log(response);
+	} catch (error) {
+	console.error(error);
+	}
+  }
+
+  createUser(data);
+							</code></pre>
+						</div><!--//docs-code-block-->
+						<br>
+						<p><strong>Performing a <span>PUT</span> request:</strong></p>
+        
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  const data = {
+	title: "delectus aut autem",
+	completed: false
+  }
+
+  // Using Promise
+  carrier.put('https://jsonplaceholder.typicode.com/todos/5', data).then((result) => {
+	console.log(result)
+  }).catch((err) => {
+	console.log(err)
+  });
+
+  ---------
+
+  // Using Async/Await
+  async function updateUser(data) {
+	try {
+	const response = await carrier.put('https://jsonplaceholder.typicode.com/todos/5', data)
+	console.log(response);
+	} catch (error) {
+	console.error(error);
+	}
+  }
+
+  updateUser(data);
+							</code></pre>
+						</div><!--//docs-code-block-->
+						<br>
+						<p><strong>Performing a <span>DELETE</span> request:</strong></p>
+        
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+
+  // Using Promise
+  carrier.delete('https://jsonplaceholder.typicode.com/todos/5').then((result) => {
+	console.log(result)
+  }).catch((err) => {
+	console.log(err)
+  });
+
+  ---------
+
+  // Using Async/Await
+  async function deleteUser(data) {
+	try {
+	const response = await carrier.delete('https://jsonplaceholder.typicode.com/todos/')
+	console.log(response);
+	} catch (error) {
+	console.error(error);
+	}
+  }
+
+  deleteUser(data);
+							</code></pre>
+						</div><!--//docs-code-block-->
 					</section><!--//section-->
 					
 					<section class="docs-section" id="request-method-aliases">
@@ -222,29 +317,79 @@
 						<p><b>Note -</b> While using this methods, <code>url</code> is required and <code>data</code> is optional. <code>refresh</code> is by default <code>false</code>. If you want to get fresh data everytime from the server, you need to send <code>true</code> after <code>url</code> parameter.</p>
 					</section><!--//section-->
 					
+					<section class="docs-section" id="set-request-headers">
+						<h2 class="section-heading">Set Request Headers</h2>
+						<p>Let's see how we can use it to add request headers to an HTTP request.</p>
+
+						<p>Now, there are multiple ways to set request headers. The most common way is to use the <code>headers</code> property of the <code>carrier</code> object like this:</p>
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  import carrier from 'carrierjs';
+
+  const fetchTodos = async () => {
+	const result = await carrier.get(
+	  'https://jsonplaceholder.typicode.com/todos/',
+	  true,
+	  {
+		headers: {
+		  'header_1': 'value_1',
+		  'header_2': 'value_2'
+		}
+	  }
+	);
+	return result.response;
+  };
+							</code></pre>
+						</div><!--//docs-code-block-->
+
+						<br>
+						<br>
+						<p>You can also add these headers using a <code>config</code> object for a cleaner code.</p>
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  import carrier from 'carrierjs';
+
+  const fetchTodos = async () => {
+	const config = {
+	  headers: {
+		'header_1': 'value_1',
+		'header_2': 'value_2'
+	  }
+	};
+	const result = await carrier.get(
+		'https://jsonplaceholder.typicode.com/todos/',
+		config
+	);
+
+	return result.response;
+  };			
+							</code></pre>
+						</div><!--//docs-code-block-->
+					</section><!--//section-->
+					
 					<section class="docs-section" id="response-object">
 						<h2 class="section-heading">Response Object</h2>
 						<p>The response for a request contains the following information.</p>
 						<div class="docs-code-block">
 							<pre class="rounded"><code class="javascript hljs">
 {
-	// `response` is the response that was provided by the server
-	response: {},
-	
-	// `status` is the HTTP status code from the server response
-	status: statusCode,
-	
-	// `type` is the type of response recieved from the server eg. json, script
-	type: '',
-	
-	// `headers` the HTTP headers that the server responded with headers
-	headers: {},
-	
-	// `request` is the request that generated this response
-	request: {}
-	
-	// `url` is the url to that request is generated
-	url: {}
+  // `response` is the response that was provided by the server
+  response: {},
+
+  // `status` is the HTTP status code from the server response
+  status: statusCode,
+
+  // `type` is the type of response recieved from the server eg. json, script
+  type: '',
+
+  // `headers` the HTTP headers that the server responded with headers
+  headers: {},
+
+  // `request` is the request that generated this response
+request: {}
+
+  // `url` is the url to that request is generated
+  url: {}
 }
 							</code></pre>
 						</div><!--//docs-code-block-->

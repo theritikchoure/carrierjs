@@ -18,6 +18,7 @@
 - [Installation](#installation)
 - [Examples](#examples)
 - [Request method aliases](#request-method-aliases)
+- [Set Request Headers](#set-request-headers)
 - [Response Object](#response-object)
 - [Handling Errors](#handling-errors)
 - [Contribution](#contribution)
@@ -86,22 +87,22 @@ There are several benefits of caching your API's response. Here are some of them
 npm install --save carrierjs
 ```
 
-### Using CDN
+### Using cdnjs
 
 ```bash
-<script src="https://theritikchoure.github.io/carrierjs/carrier.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/carrierjs/2.3.0/carrier.js">
 ```
 
 ### Using jsDelivr
 
 ```bash
-<script src="https://cdn.jsdelivr.net/npm/carrierjs@1/carrier.min.js">
+<script src="https://cdn.jsdelivr.net/npm/carrierjs@latest/carrier.js">
 ```
 
 ### Using unpkg
 
 ```bash
-<script src="https://unpkg.com/carrierjs@1.0.1/carrier.js">
+<script src="https://unpkg.com/carrierjs@latest/carrier.js">
 ```
 
 ## Examples
@@ -231,6 +232,52 @@ For your ease, aliases have been provided for request methods.
 **carrier.delete(url, [data])**
 
 **Note -** While using this methods, `url` is required and `data` is optional. `refresh` is by default `false`. If you want to get fresh data everytime from the server, you need to send `true` after `url` parameter.
+
+## Set Request Headers
+
+Let's see how we can use it to add request headers to an HTTP request.
+
+Now, there are multiple ways to set request headers. The most common way is to use the ```headers``` property of the ```carrier``` object like this:
+
+```js
+import carrier from 'carrierjs';
+
+const fetchTodos = async () => {
+	const result = await carrier.get(
+		'https://jsonplaceholder.typicode.com/todos/',
+    true,
+		{
+			headers: {
+				'header_1': 'value_1',
+				'header_2': 'value_2'
+			}
+		}
+	);
+	return result.response;
+};
+```
+
+You can also add these headers using a ```config``` object for a cleaner code.
+
+```js
+import carrier from 'carrierjs';
+
+const fetchTodos = async () => {
+	const config = {
+		headers: {
+			'header_1': 'value_1',
+      'header_2': 'value_2'
+		}
+	};
+	const result = await carrier.get(
+		'https://jsonplaceholder.typicode.com/todos/',
+		config
+	);
+	return result.response;
+};
+
+```
+
 
 ## Response Object
 
