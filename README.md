@@ -128,6 +128,8 @@ async function getUser() {
     console.error(error);
   }
 }
+
+getUser();
 ```
 
 **Performing a POST request:**
@@ -139,7 +141,7 @@ const data = {
 }
 
 // Using Promise
-carrier.post('/todos', data).then((result) => {
+carrier.post('https://jsonplaceholder.typicode.com/todos', data).then((result) => {
     console.log(result)
 }).catch((err) => {
     console.log(err)
@@ -150,7 +152,7 @@ carrier.post('/todos', data).then((result) => {
 // Using Async/Await
 async function createUser(data) {
   try {
-    const response = await carrier.post('/todos', data)
+    const response = await carrier.post('https://jsonplaceholder.typicode.com/todos', data)
     console.log(response);
   } catch (error) {
     console.error(error);
@@ -169,7 +171,7 @@ const data = {
 }
 
 // Using Promise
-carrier.put('/todos', data).then((result) => {
+carrier.put('https://jsonplaceholder.typicode.com/todos/5', data).then((result) => {
     console.log(result)
 }).catch((err) => {
     console.log(err)
@@ -178,16 +180,42 @@ carrier.put('/todos', data).then((result) => {
 ---------
 
 // Using Async/Await
-async function createUser(data) {
+async function updateUser(data) {
   try {
-    const response = await carrier.put('/todos', data)
+    const response = await carrier.put('https://jsonplaceholder.typicode.com/todos/5', data)
     console.log(response);
   } catch (error) {
     console.error(error);
   }
 }
 
-createUser(data);
+updateUser(data);
+```
+
+**Performing a DELETE request:**
+
+```jsx
+
+// Using Promise
+carrier.delete('https://jsonplaceholder.typicode.com/todos/5').then((result) => {
+    console.log(result)
+}).catch((err) => {
+    console.log(err)
+});
+
+---------
+
+// Using Async/Await
+async function deleteUser(data) {
+  try {
+    const response = await carrier.delete('https://jsonplaceholder.typicode.com/todos/')
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+deleteUser(data);
 ```
 
 ## Request method aliases
