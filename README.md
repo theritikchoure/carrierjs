@@ -245,7 +245,7 @@ import carrier from 'carrierjs';
 const fetchTodos = async () => {
 	const result = await carrier.get(
 		'https://jsonplaceholder.typicode.com/todos/',
-    true,
+        true,
 		{
 			headers: {
 				'header_1': 'value_1',
@@ -266,7 +266,7 @@ const fetchTodos = async () => {
 	const config = {
 		headers: {
 			'header_1': 'value_1',
-      'header_2': 'value_2'
+            'header_2': 'value_2'
 		}
 	};
 	const result = await carrier.get(
@@ -278,6 +278,31 @@ const fetchTodos = async () => {
 
 ```
 
+**⚠️ Headers limitations**
+
+Several headers are managed exclusively by the browser, e.g. `Referer` and `Host`. The full list is in the [specification](https://xhr.spec.whatwg.org/#the-setrequestheader()-method).
+
+`carrier` not allowed to change them, for the sake of user safety and correctness of the request.
+
+**⚠️ Can’t remove a header**
+
+Another peculiarity of `carrier` is that one can’t undo `headers`.
+
+Once the header is set, it’s set. Additional calls add information to the header, don’t overwrite it.
+
+For instance:
+
+```js
+const config = {
+    headers: {
+        'header_1': 'value_1',
+        'header_1': 'value_2'
+    }
+};
+
+// the header will be:
+// header_1: value_1, value_2
+```
 
 ## Response Object
 
