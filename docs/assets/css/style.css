@@ -46,3 +46,25 @@ pre code {
 .docs-content {
     padding-bottom: 0;
 }
+
+#btn-back-to-top {
+    position: fixed;
+    border: 2px #28b76b solid;
+    border-radius: 100px;
+    bottom: 40px;
+    size: 10px;
+    right: 10px;
+    display: none;
+    color: #28b76b;
+  }
+
+  .btn-warning {
+    background-color: white;
+    box-shadow: black;
+  }
+
+  #btn-back-to-top:hover, #btn-back-to-top:active {
+    background-color: #28b76b!important;
+    color: #fff;
+    border: 2px #fff solid;
+  }
