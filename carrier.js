@@ -152,6 +152,10 @@ let carrier = {
                     handleOptions.setRequestHeader(req, options.headers);
                 }
 
+                if (options.timeout) {
+                    req.timeout = options.timeout;
+                }
+
                 req.send();
 
                 req.onload = async () => {
@@ -205,6 +209,10 @@ let carrier = {
                 handleOptions.setRequestHeader(req, options.headers);
             }
 
+            if (options.timeout) {
+                req.timeout = options.timeout;
+            }
+
             req.send(JSON.stringify(data) || null);
 
             req.onload = () => {
@@ -244,6 +252,10 @@ let carrier = {
 
             if(options.headers) {
                 handleOptions.setRequestHeader(req, options.headers);
+            }
+
+            if (options.timeout) {
+                req.timeout = options.timeout;
             }
 
             req.send(JSON.stringify(data) || null);
@@ -286,6 +298,10 @@ let carrier = {
                 handleOptions.setRequestHeader(req, options.headers);
             }
 
+            if (options.timeout) {
+                req.timeout = options.timeout;
+            }
+
             req.send(JSON.stringify(data) || null);
 
             req.onload = () => {
@@ -324,6 +340,10 @@ let carrier = {
             
             if(options.headers) {
                 handleOptions.setRequestHeader(req, options.headers);
+            }
+
+            if (options.timeout) {
+                req.timeout = options.timeout;
             }
 
             req.send(JSON.stringify(data) || null);
