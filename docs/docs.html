@@ -190,6 +190,8 @@
         
 						<div class="docs-code-block">
 							<pre class="rounded"><code class="javascript hljs">
+  import carrier from 'carrierjs';
+  
   // Using Promise
   carrier.get('/todos').then((result) => {
    	console.log(result)
@@ -215,6 +217,8 @@
         
 						<div class="docs-code-block">
 							<pre class="rounded"><code class="javascript hljs">
+  import carrier from 'carrierjs';
+  
   const data = {
 	title: "delectus aut autem",
 	completed: false
@@ -247,6 +251,8 @@
         
 						<div class="docs-code-block">
 							<pre class="rounded"><code class="javascript hljs">
+  import carrier from 'carrierjs';
+
   const data = {
 	title: "delectus aut autem",
 	completed: false
@@ -275,10 +281,45 @@
 							</code></pre>
 						</div><!--//docs-code-block-->
 						<br>
+						<p><strong>Performing a <span>PATCH</span> request:</strong></p>
+        
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  import carrier from 'carrierjs';
+
+  const data = {
+	title: "delectus aut autem",
+	completed: false
+  }
+
+  // Using Promise
+  carrier.patch('https://jsonplaceholder.typicode.com/todos/5', data).then((result) => {
+	console.log(result)
+  }).catch((err) => {
+	console.log(err)
+  });
+
+  ---------
+
+  // Using Async/Await
+  async function updateUser(data) {
+	try {
+	const response = await carrier.patch('https://jsonplaceholder.typicode.com/todos/5', data)
+	console.log(response);
+	} catch (error) {
+	console.error(error);
+	}
+  }
+
+  updateUser(data);
+							</code></pre>
+						</div><!--//docs-code-block-->
+						<br>
 						<p><strong>Performing a <span>DELETE</span> request:</strong></p>
         
 						<div class="docs-code-block">
 							<pre class="rounded"><code class="javascript hljs">
+  import carrier from 'carrierjs';
 
   // Using Promise
   carrier.delete('https://jsonplaceholder.typicode.com/todos/5').then((result) => {
@@ -421,11 +462,6 @@ request: {}
     <button type="button" class="btn btn-warning btn-xs" id="btn-back-to-top">
       <i class="fas fa-arrow-circle-up"></i>
     </button>
-
-    <script>
-      
-    </script>
-
     <!-- scroll to top feature code ends   -->
 	
     <!-- Javascript -->          

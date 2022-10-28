@@ -110,6 +110,7 @@ npm install --save carrierjs
 **Performing a GET request:**
 
 ```jsx
+import carrier from 'carrierjs';
 
 // Using Promise
 carrier.get('https://jsonplaceholder.typicode.com/todos/').then((result) => {
@@ -136,6 +137,8 @@ getUser();
 **Performing a POST request:**
 
 ```jsx
+import carrier from 'carrierjs';
+
 const data = {
     title: "delectus aut autem",
     completed: false
@@ -166,16 +169,18 @@ createUser(data);
 **Performing a PUT request:**
 
 ```jsx
+import carrier from 'carrierjs';
+
 const data = {
-    title: "delectus aut autem",
-    completed: false
+  title: "delectus aut autem",
+  completed: false
 }
 
 // Using Promise
 carrier.put('https://jsonplaceholder.typicode.com/todos/5', data).then((result) => {
-    console.log(result)
+  console.log(result)
 }).catch((err) => {
-    console.log(err)
+  console.log(err)
 });
 
 ---------
@@ -193,15 +198,48 @@ async function updateUser(data) {
 updateUser(data);
 ```
 
+**Performing a PATCH request:**
+
+```jsx
+import carrier from 'carrierjs';
+
+const data = {
+  title: "delectus aut autem",
+  completed: false
+}
+
+// Using Promise
+carrier.patch('https://jsonplaceholder.typicode.com/todos/5', data).then((result) => {
+  console.log(result)
+}).catch((err) => {
+  console.log(err)
+});
+
+---------
+
+// Using Async/Await
+async function updateUser(data) {
+  try {
+    const response = await carrier.patch('https://jsonplaceholder.typicode.com/todos/5', data)
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+updateUser(data);
+```
+
 **Performing a DELETE request:**
 
 ```jsx
+import carrier from 'carrierjs';
 
 // Using Promise
 carrier.delete('https://jsonplaceholder.typicode.com/todos/5').then((result) => {
-    console.log(result)
+  console.log(result)
 }).catch((err) => {
-    console.log(err)
+  console.log(err)
 });
 
 ---------
@@ -223,21 +261,23 @@ deleteUser(data);
 
 For your ease, aliases have been provided for request methods.
 
-**carrier.get(url, [refresh])**
+**carrier.get(url, [refresh], [options])**
 
-**carrier.post(url, [data])**
+**carrier.post(url, [data], [options])**
 
-**carrier.put(url, [data])**
+**carrier.put(url, [data], [options])**
 
-**carrier.delete(url, [data])**
+**carrier.patch(url, [data], [options])**
 
-**Note -** While using this methods, `url` is required and `data` is optional. `refresh` is by default `false`. If you want to get fresh data everytime from the server, you need to send `true` after `url` parameter.
+**carrier.delete(url, [data], [options])**
+
+**Note -** While using this methods, `url` is required, `data` and `options` are optional. `refresh` is by default `false`. If you want to get fresh data everytime from the server, you need to send `true` after `url` parameter.
 
 ## Set Request Headers
 
 Let's see how we can use it to add request headers to an HTTP request.
 
-Now, there are multiple ways to set request headers. The most common way is to use the ```headers``` property of the ```carrier``` object like this:
+Now, there are multiple ways to set request headers. The most common way is to use the `headers` property of the `carrier` object like this:
 
 ```js
 import carrier from 'carrierjs';
@@ -245,7 +285,7 @@ import carrier from 'carrierjs';
 const fetchTodos = async () => {
 	const result = await carrier.get(
 		'https://jsonplaceholder.typicode.com/todos/',
-        true,
+    true,
 		{
 			headers: {
 				'header_1': 'value_1',
@@ -266,7 +306,7 @@ const fetchTodos = async () => {
 	const config = {
 		headers: {
 			'header_1': 'value_1',
-            'header_2': 'value_2'
+      'header_2': 'value_2'
 		}
 	};
 	const result = await carrier.get(
@@ -295,8 +335,8 @@ For instance:
 ```js
 const config = {
     headers: {
-        'header_1': 'value_1',
-        'header_1': 'value_2'
+      'header_1': 'value_1',
+      'header_1': 'value_2'
     }
 };
 
