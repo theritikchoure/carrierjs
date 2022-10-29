@@ -53,7 +53,7 @@
 	                    <span></span>
 	                    <span></span>
 	                </button>
-	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon me-2" src="assets/images/carrierjs-logo.png" alt="logo"><span class="logo-text">Carrier<span class="text-alt">JS</span></span></a></div>    
+	                <div class="site-logo"><a class="navbar-brand" href="/"><img class="logo-icon me-2" src="assets/images/carrierjs-logo.png" alt="logo"><span class="logo-text">Carrier<span class="text-alt">JS</span></span></a></div>    
                 </div><!--//docs-logo-wrapper-->
 	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
 					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
@@ -84,6 +84,9 @@
 				    <li class="nav-item"><a class="nav-link scrollto" href="#response-object">Response Object</a></li>
 				    <li class="nav-item"><a class="nav-link scrollto" href="#handling-errors">Handling Errors</a></li>
 				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="" onclick="return false;"><span class="theme-icon-holder me-2"><i class="fas fa-lightbulb"></i></span>Others</a></li>
+				    <li class="nav-item">
+						<a class="nav-link" href="/contributors.html">Our contributors</a>
+					</li>
 				    <li class="nav-item">
 						<a class="nav-link" href="https://github.com/theritikchoure/carrierjs/blob/master/CONTRIBUTING.md" target="_blank">Contribute to CarrierJs</a>
 					</li>
@@ -405,6 +408,49 @@
   };			
 							</code></pre>
 						</div><!--//docs-code-block-->
+
+						<div class="callout-block callout-block-warning">
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder me-1">
+		                                <i class="fas fa-bullhorn"></i>
+		                            </span><!--//icon-holder-->
+	                                Headers limitations
+	                            </h4>
+                                <p>Several headers are managed exclusively by the browser, e.g. <code>Referer</code> and <code>Host</code>. The full list is in the specification.</p>
+								<br>
+								<p><code>carrier</code> not allowed to change them, for the sake of user safety and correctness of the request.</p>
+                            </div><!--//content-->
+                        </div><!--//callout-block-->
+						
+						<div class="callout-block callout-block-warning">
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder me-1">
+		                                <i class="fas fa-bullhorn"></i>
+		                            </span><!--//icon-holder-->
+	                                Can’t remove a header
+	                            </h4>
+                                <p>Another peculiarity of <code>carrier</code> is that one can’t undo <code>headers</code>.</p>
+								<br>
+								<p><code>carrier</code> not allowed to change them, for the sake of user safety and correctness of the request.</p>
+                            </div><!--//content-->
+                        </div><!--//callout-block-->
+
+						<p>For instance:</p>
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  const config = {
+	headers: {
+		'header_1': 'value_1',
+		'header_1': 'value_2'
+	}
+  };
+
+  // the header will be:
+  // header_1: value_1, value_2
+							</code></pre>
+						</div>
 					</section><!--//section-->
 					
 					<section class="docs-section" id="response-object">

@@ -215,3 +215,59 @@ pre code {
     }
 
 }
+
+
+/* Create two equal columns that floats next to each other */
+.contributors-column {
+    float: left;
+    width: 20%;
+    padding: 10px;
+  }
+  
+  /* Clear floats after the columns */
+  .contributors-row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .contributors-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: center;
+    font-family: arial;
+  }
+
+  .contributors-name {
+    padding: 0 10px;
+    font-size: 18px;
+    margin-top: 12px;
+  }
+  
+  .contributors-title {
+    color: grey;
+    font-size: 15px;
+    padding: 0 10px;
+    height: 68px;
+    overflow: hidden;
+  }
+  
+  .contributors-card-button {
+   width: 100%;
+  }
+  
+  .contributors-card .contributors-card-button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  .contributors-thank-you-container {
+    text-align: center;
+    line-height: 35px;
+  }
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .contributors-column {
+        width: 100%;
+    }
+}
