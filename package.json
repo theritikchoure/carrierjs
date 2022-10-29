@@ -19,6 +19,7 @@
     "theritikchoure",
     "license",
     "caching",
+    "cache",
     "javascript",
     "js",
     "request"
@@ -30,5 +31,5 @@
   "bugs": {
     "url": "https://github.com/theritikchoure/carrierjs/issues"
   },
-  "homepage": "https://theritikchoure.github.io/carrierjs/doc/"
+  "homepage": "https://carrier.js.org/"
 }
