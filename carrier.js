@@ -122,9 +122,14 @@ let handleOptions = {
     setRequestHeader: (req, headers = {}) => {
         if(helpers.isObjectEmpty(headers)) return;
 
-        for (const header in headers) {
-            req.setRequestHeader(header, headers[header]);
-        }
+        for (const header in headers) req.setRequestHeader(header, headers[header]);
+    },
+    setRequestParams: (url, params = {}) => {
+        if(helpers.isObjectEmpty(params)) return url;
+        url = url.slice(-1) === '/' ? url.slice(0, url.length - 1) : url;
+        let query = '?';
+        for (const param in params) query += `${param}=${params[param]}&`;
+        return encodeURI(url+query.slice(0, query.length - 1));
     }
 }
 
@@ -147,7 +152,14 @@ let carrier = {
 
                 let req = new XMLHttpRequest();
                 req.responseType = 'json';
+
+                if(options.params) {
+                    url = handleOptions.setRequestParams(url, options.params);
+                }
+
+                //Open the request
                 req.open("GET", url);
+                
                 if(options.headers) {
                     handleOptions.setRequestHeader(req, options.headers);
                 }
@@ -203,6 +215,11 @@ let carrier = {
 
             let req = new XMLHttpRequest();
             req.responseType = 'json';
+
+            if(options.params) {
+                url = handleOptions.setRequestParams(url, options.params);
+            }
+
             req.open("POST", url);
 
             if(options.headers) {
@@ -248,6 +265,11 @@ let carrier = {
 
             let req = new XMLHttpRequest();
             req.responseType = 'json';
+
+            if(options.params) {
+                url = handleOptions.setRequestParams(url, options.params);
+            }
+
             req.open("PUT", url);
 
             if(options.headers) {
@@ -292,6 +314,11 @@ let carrier = {
 
             let req = new XMLHttpRequest();
             req.responseType = 'json';
+
+            if(options.params) {
+                url = handleOptions.setRequestParams(url, options.params);
+            }
+            
             req.open("PATCH", url);
 
             if(options.headers) {
@@ -336,6 +363,11 @@ let carrier = {
 
             let req = new XMLHttpRequest();
             req.responseType = 'json';
+
+            if(options.params) {
+                url = handleOptions.setRequestParams(url, options.params);
+            }
+            
             req.open("DELETE", url);
             
             if(options.headers) {
