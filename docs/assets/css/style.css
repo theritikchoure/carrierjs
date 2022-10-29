@@ -271,3 +271,36 @@ pre code {
         width: 100%;
     }
 }
+
+
+/* Loader Styles (Start)*/
+
+.loader-div {
+    text-align: center;
+}
+.loader {
+    margin: auto;
+    margin-top: 75px;
+    margin-bottom: 20px;
+    display: block;
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #28b76b;
+    border-bottom: 5px solid #28b76b;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: loader-spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes loader-spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes loader-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+/* Loader Styles (Start)*/

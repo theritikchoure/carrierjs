@@ -38,6 +38,7 @@ let generateColumn = async () => {
         column = column+hello;
     }
 
+    // return;
     row.innerHTML = column;
 }
 
