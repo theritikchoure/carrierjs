@@ -1,6 +1,6 @@
 /*!
  * Carrier.js
- * v0.0.1 - 2022-08-12
+ * v2.5.0 - 2022-11-01
  * (c) Ritik Chourasiya;  License
  * Created by: Ritik Chourasiya
  */
@@ -134,12 +134,12 @@ let handleOptions = {
 }
 
 let carrier = {
-    get: function(url, refresh = false, options = {}) {
+    get: function(url = null, refresh = false, options = {}) {
 
         let promise = new Promise(async (resolve, reject) =>{
 
             if(helpers.isEmpty(url)) {
-                displayErrorMessage('Url is required to make request');
+                reject({name: "CarrierError", message: "Url is required to make request", code: "NOT_FOUND"});
                 return;
             }
 
@@ -196,8 +196,14 @@ let carrier = {
                     }
 
                     if(req.status === 404) {
-                        reject(new Error('Url not Found'));
+                        reject({name: "CarrierError", request: req, message: "Request failed with status code 404", code: "BAD_REQUEST", 
+                            response: res, url: req.responseURL});
                     }
+                }
+
+                // Handle minor network error
+                req.onerror = () => {
+                    reject({name: "CarrierError", request: req, message: "Network Error", code: "NETWORK_ERROR"});
                 }
             }
         });
@@ -205,11 +211,11 @@ let carrier = {
         return promise;
     },
 
-    post: function(url, data = null, options = {}) {
+    post: function(url = null, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
 
             if(helpers.isEmpty(url)) {
-                displayErrorMessage('Url is required to make request');
+                reject({name: "CarrierError", message: "Url is required to make request", code: "NOT_FOUND"});
                 return;
             }
 
@@ -248,18 +254,25 @@ let carrier = {
                 }
 
                 if(req.status === 404) {
-                    reject(res);
+                    reject({name: "CarrierError", request: req, message: "Request failed with status code 404", code: "BAD_REQUEST", 
+                        response: res, url: req.responseURL});
                 }
+            }
+
+            // Handle minor network error
+            req.onerror = () => {
+                reject({name: "CarrierError", request: req, message: "Network Error", code: "NETWORK_ERROR"});
             }
         });
 
         return promise;
     },
     
-    put: function(url, data = null, options = {}) {
+    put: function(url = null, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
+            
             if(helpers.isEmpty(url)) {
-                displayErrorMessage('Url is required to make request');
+                reject({name: "CarrierError", message: "Url is required to make request", code: "NOT_FOUND"});
                 return;
             }
 
@@ -298,17 +311,24 @@ let carrier = {
                 }
 
                 if(req.status === 404) {
-                    reject(res);
+                    reject({name: "CarrierError", request: req, message: "Request failed with status code 404", code: "BAD_REQUEST", 
+                        response: res, url: req.responseURL});
                 }
+            }
+
+            // Handle minor network error
+            req.onerror = () => {
+                reject({name: "CarrierError", request: req, message: "Network Error", code: "NETWORK_ERROR"});
             }
         });
 
         return promise;
     },
-    patch: function(url, data = null, options = {}) {
+    patch: function(url = null, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
+            
             if(helpers.isEmpty(url)) {
-                displayErrorMessage('Url is required to make request');
+                reject({name: "CarrierError", message: "Url is required to make request", code: "NOT_FOUND"});
                 return;
             }
 
@@ -347,17 +367,24 @@ let carrier = {
                 }
 
                 if(req.status === 404) {
-                    reject(res);
+                    reject({name: "CarrierError", request: req, message: "Request failed with status code 404", code: "BAD_REQUEST", 
+                        response: res, url: req.responseURL});
                 }
+            }
+
+            // Handle minor network error
+            req.onerror = () => {
+                reject({name: "CarrierError", request: req, message: "Network Error", code: "NETWORK_ERROR"});
             }
         });
 
         return promise;
     },
-    delete: function(url, data = null, options = {}) {
+    delete: function(url = null, data = null, options = {}) {
         let promise = new Promise((resolve, reject) =>{
+            
             if(helpers.isEmpty(url)) {
-                displayErrorMessage('Url is required to make request');
+                reject({name: "CarrierError", message: "Url is required to make request", code: "NOT_FOUND"});
                 return;
             }
 
@@ -396,8 +423,14 @@ let carrier = {
                 }
 
                 if(req.status === 404) {
-                    reject(res);
+                    reject({name: "CarrierError", request: req, message: "Request failed with status code 404", code: "BAD_REQUEST", 
+                        response: res, url: req.responseURL});
                 }
+            }
+
+            // Handle minor network error
+            req.onerror = () => {
+                reject({name: "CarrierError", request: req, message: "Network Error", code: "NETWORK_ERROR"});
             }
         });
 
