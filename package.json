@@ -1,6 +1,6 @@
 {
   "name": "carrierjs",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "Powerful and simple promise based HTTP client for the browser with ultimate caching",
   "main": "carrier.js",
   "author": "theritikchoure",
@@ -31,5 +31,5 @@
   "bugs": {
     "url": "https://github.com/theritikchoure/carrierjs/issues"
   },
-  "homepage": "https://carrier.js.org/"
+  "homepage": "https://carrier.js.org"
 }

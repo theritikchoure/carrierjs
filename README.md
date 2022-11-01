@@ -90,7 +90,7 @@ npm install --save carrierjs
 ### Using cdnjs
 
 ```bash
-<script src="https://cdnjs.cloudflare.com/ajax/libs/carrierjs/2.3.0/carrier.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/carrierjs/2.5.0/carrier.js">
 ```
 
 ### Using jsDelivr
@@ -368,6 +368,81 @@ The response for a request contains the following information.
   // `url` is the url to that request is generated
   url: {}
 }
+```
+
+## Handling Errors
+
+To handle errors in a standard API calls, we use a `try...catch` block. For example, take a look at the following code, 
+
+```js
+import carrier from 'carrierjs';
+
+const fetchTodos = async () => {
+	try {
+		const res = await carrier.get(
+			`https://jsonplaceholder.typicode.com/todos/`
+		);
+	} catch (error) {
+		// Do something with the error here
+	}
+};
+```
+
+If an error occurs, the `catch` block captures it. We need to add some logic in this block to handle the errors. We have to take care of three scenarios of errors:
+
+- Request is made, but the server responds with an error.
+
+- Request is made, but no response is received from the server.
+
+- When an error occurs while setting up the request.
+
+To handle these scenarios, we can use an `if-else` block like this:
+
+```js
+try {
+    const res = await carrier.get(`https://jsonplaceholder.typicode.com/todos/`);
+} catch (error) {
+    if (error.response) {
+		// Request made but the server responded with an error
+	} else if (error.request) {
+		// Request made but no response is received from the server.
+	} else {
+		// Error occured while setting up the request
+	}
+}
+```
+
+It is critical to check for the `request` and `response` properties because there will be no `response` property if we do not receive a response. Similarly, there will be no `request` property if the request is not set up. Let's take a look at these properties.
+
+#### error.response
+
+If the request is made and the server gives an error response, the error object will have a `response` property. It means that a `4XX` or `5XX` error has occurred. The response object has many properties which we can log, like the `status` property, which has the status code of the error.
+
+#### error.request
+
+`error.request` is the request object of the HTTP request that the client made. It contains information such as the HTTP method, URL, and the headers sent with the request. For CarrierJs, it is an instance of `XMLHttpRequest` when running in the browser and an instance of `http.ClientRequest` when executed in Node.js. We use it when we do not receive a valid response from the API due to a poor network or unauthorized access.
+
+### Logging Errors
+
+We can use these properties to log errors properly. It will look like this in code:
+
+```js
+try {
+	const res = await carrier.get(`https://jsonplaceholder.typicode.com/todos/`);
+} catch (error) {
+	if (error.response) {
+		// Request made but the server responded with an error
+		console.log(error.response.status);
+		console.log(error.response.headers);
+	} else if (error.request) {
+		// Request made but no response is received from the server.
+		console.log(error.request);
+	} else {
+		// Error occured while setting up the request
+		console.log('Error', error.message);
+	}
+}
+
 ```
 
 ## Contribution

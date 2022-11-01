@@ -169,19 +169,19 @@
 						<!-- Using cdnjs -->
 						<h5>Using cdnjs CDN</h5>
 						<pre class="code-area">
-						<code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/carrierjs/2.3.0/carrier.js"&gt;</code>
+						<code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/carrierjs/2.5.0/carrier.js"&gt;</code>
 						</pre>
 						<br>
 						<!-- Using jsDelivr CDN -->
 						<h5>Using jsDelivr CDN</h5>
 						<pre class="code-area">
-						<code>&lt;script src="https://cdn.jsdelivr.net/npm/carrierjs@2.3.0/carrier.js"&gt;</code>
+						<code>&lt;script src="https://cdn.jsdelivr.net/npm/carrierjs@latest/carrier.js"&gt;</code>
 						</pre>
 						<br>
 						<!-- Using unpkg CDN -->
 						<h5>Using unpkg CDN</h5>
 						<pre class="code-area">
-						<code>&lt;script src="https://unpkg.com/carrierjs@1.0.1/carrier.js"&gt;</code>
+						<code>&lt;script src="https://unpkg.com/carrierjs@latest/carrier.js"&gt;</code>
 						</pre>
 					</section><!--//section-->
 					
@@ -352,10 +352,11 @@
 						<h2 class="section-heading">Request Method Aliases</h2>
 						<p>For your ease, aliases have been provided for request methods.</p>
 						<ul class="line-height-30">
-							<li><b>carrier.get(url, [refresh])</b></li>
-							<li><b>carrier.post(url, [data])</b></li>
-							<li><b>carrier.put(url, [data])</b></li>
-							<li><b>carrier.delete(url, [data])</b></li>
+							<li><b>carrier.get(url, [refresh], [options])</b></li>
+							<li><b>carrier.post(url, [data], [options])</b></li>
+							<li><b>carrier.put(url, [data], [options])</b></li>
+							<li><b>carrier.patch(url, [data], [options])</b></li>
+							<li><b>carrier.delete(url, [data], [options])</b></li>
 						</ul>
 						<p><b>Note -</b> While using this methods, <code>url</code> is required and <code>data</code> is optional. <code>refresh</code> is by default <code>false</code>. If you want to get fresh data everytime from the server, you need to send <code>true</code> after <code>url</code> parameter.</p>
 					</section><!--//section-->
@@ -472,11 +473,84 @@
   headers: {},
 
   // `request` is the request that generated this response
-request: {}
+  request: {}
 
   // `url` is the url to that request is generated
   url: {}
 }
+							</code></pre>
+						</div><!--//docs-code-block-->
+					</section><!--//section-->
+					
+					<section class="docs-section" id="handling-errors">
+						<h2 class="section-heading">Handling Errors</h2>
+						<p>To handle errors in a standard API calls, we use a <code>try...catch</code> block. For example, take a look at the following code, </p>
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  import carrier from 'carrierjs';
+
+  const fetchTodos = async () => {
+    try {
+	  const res = await carrier.get(`https://jsonplaceholder.typicode.com/todos/`);
+    } catch (error) {
+	  // Do something with the error here
+    }
+  };
+							</code></pre>
+						</div><!--//docs-code-block-->
+						<br>
+						<p>If an error occurs, the <code>catch</code> block captures it. We need to add some logic in this block to handle the errors. We have to take care of three scenarios of errors:</p>
+						<ul>
+							<li>Request is made, but the server responds with an error.</li>
+							<li>Request is made, but no response is received from the server.</li>
+							<li>When an error occurs while setting up the request.</li>
+						</ul>
+
+						<p>To handle these scenarios, we can use an <code>if-else</code> block like this:</p>
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  try {
+	const res = await carrier.get(`https://jsonplaceholder.typicode.com/todos/`);
+  } catch (error) {
+	if (error.response) {
+	  // Request made but the server responded with an error
+	} else if (error.request) {
+	  // Request made but no response is received from the server.
+	} else {
+	  // Error occured while setting up the request
+	}
+  }
+							</code></pre>
+						</div><!--//docs-code-block-->
+
+						<p>It is critical to check for the <code>request</code> and <code>response</code> properties because there will be no <code>response</code> property if we do not receive a response. Similarly, there will be no <code>request</code> property if the request is not set up. Let's take a look at these properties.</p>
+					
+						<h5>error.response</h5>
+						<p>If the request is made and the server gives an error response, the error object will have a <code>response</code> property. It means that a <code>4XX</code> or <code>5XX</code> error has occurred. The response object has many properties which we can log, like the <code>status</code> property, which has the status code of the error.</p>
+
+						<h5>error.request</h5>
+						<p><code>error.request</code> is the request object of the HTTP request that the client made. It contains information such as the HTTP method, URL, and the headers sent with the request. For CarrierJs, it is an instance of <code>XMLHttpRequest</code> when running in the browser and an instance of <code>http.ClientRequest</code> when executed in Node.js. We use it when we do not receive a valid response from the API due to a poor network or unauthorized access.</p>
+
+						<h4>Logging Errors</h4>
+						<p>We can use these properties to log errors properly. It will look like this in code:</p>
+
+						<div class="docs-code-block">
+							<pre class="rounded"><code class="javascript hljs">
+  try {
+	const res = await carrier.get(`https://jsonplaceholder.typicode.com/todos/`);
+  } catch (error) {
+	if (error.response) {
+	  // Request made but the server responded with an error
+	  console.log(error.response.status);
+	  console.log(error.response.headers);
+	} else if (error.request) {
+	  // Request made but no response is received from the server.
+	  console.log(error.request);
+	} else {
+	  // Error occured while setting up the request
+	  console.log('Error', error.message);
+	}
+  }								
 							</code></pre>
 						</div><!--//docs-code-block-->
 					</section><!--//section-->

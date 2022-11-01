@@ -304,3 +304,16 @@ pre code {
   }
 
 /* Loader Styles (Start)*/
+
+/* Code Snippet Styles (Start) */
+.hljs {
+    color: #5c6370;
+}
+.hljs-comment, .hljs-quote {
+    color: #abb2bf;
+}
+
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta-string {
+    color: #70a54a;
+}
+/* Code Snippet Styles (End) */
