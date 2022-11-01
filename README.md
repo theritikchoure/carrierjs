@@ -21,6 +21,7 @@
 - [Set Request Headers](#set-request-headers)
 - [Response Object](#response-object)
 - [Handling Errors](#handling-errors)
+- [Guides](#guides)
 - [Contribution](#contribution)
 - [License](#license)
 
@@ -445,6 +446,27 @@ try {
 
 ```
 
+## Guides
+
+<table>
+
+<!-- First Row -->
+<tr>
+<td>
+<a href="https://hackernoon.com/how-to-implement-caching-in-react-using-carrierjs">
+<img width="140px" src="https://hackernoon.com/_next/image?url=https%3A%2F%2Fcdn.hackernoon.com%2Fimages%2FwmX5pUAo8OZNJ7VwDt1DOfj0RT83-5qc3j9d.jpeg&w=1200&q=75">
+</a>
+</td>
+<td>
+<a href="https://hackernoon.com/how-to-implement-caching-in-react-using-carrierjs">
+How to Implement Caching in React Using CarrierJS
+</a> (Hackernoon) <br>
+</td>
+</tr>
+
+</table>
+
+
 ## Contribution
 
 **Note** - Give a ⭐ to this project
@@ -476,6 +498,17 @@ git push origin branch-name
 - Star this repository if you had fun!
 
 For more information, Please read [CONTRIBUTING.md](https://github.com/theritikchoure/carrierjs/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Attribution
+
+You can use this badge for attribution in your project's readme file.
+
+[![](https://img.shields.io/badge/Created%20with-CarrierJs-%2328b76b?style=for-the-badge)](https://carrier.js.org/) 
+
+```js
+[![](https://img.shields.io/badge/Created%20with-CarrierJs-%2328b76b?style=for-the-badge)](https://carrier.js.org/)
+```
+
 
 ## License
 
