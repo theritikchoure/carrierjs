@@ -88,6 +88,12 @@ There are several benefits of caching your API's response. Here are some of them
 npm install --save carrierjs
 ```
 
+### Using YARN
+
+```bash
+yarn add carrierjs
+```
+
 ### Using cdnjs
 
 ```bash
