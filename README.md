@@ -23,6 +23,7 @@
 - [Handling Errors](#handling-errors)
 - [Guides](#guides)
 - [Contribution](#contribution)
+- [Attribution](#attribution)
 - [License](#license)
 
 ## Why CarrierJs
