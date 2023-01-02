@@ -1,4 +1,4 @@
-![Flow of Carrierjs](./docs/assets/images/Carrier.Js.png)
+![Flow of Carrierjs](./docs/assets/images/carrierjs.png)
 
 # Carrier JS
 
