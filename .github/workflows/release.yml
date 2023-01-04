@@ -1,0 +1,73 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+# Other jobs
+# ...
+  changelog:
+    name: Update Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get version from tag
+        env:
+          GITHUB_REF: $
+        run: |
+          export CURRENT_VERSION=${GITHUB_TAG/refs\/tags\/v/}
+          echo "::set-env name=CURRENT_VERSION::$CURRENT_VERSION"
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Update Changelog
+        uses: heinrichreimer/github-changelog-generator-action@v2.1.1
+        with:
+          token: $
+          issues: true
+          issuesWoLabels: true
+          pullRequests: true
+          prWoLabels: true
+          addSections: '{"documentation":{"prefix":" **Documentation:**","labels":["documentation"]}}'
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Changelog for tag $
+          file_pattern: CHANGELOG.md
+
+  release_notes:
+    name: Create Release Notes
+    runs-on: ubuntu-latest
+    needs: changelog
+    steps:
+      - name: Get version from tag
+        env:
+          GITHUB_REF: $
+        run: |
+          export CURRENT_VERSION=${GITHUB_TAG/refs\/tags\/v/}
+          echo "::set-env name=CURRENT_VERSION::$CURRENT_VERSION"
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Get Changelog Entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v1
+        with:
+          version: $
+          path: ./CHANGELOG.md
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: $ # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: $
+          release_name: Release $
+          body: $
+          draft: false
+          prerelease: false
