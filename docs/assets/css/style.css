@@ -321,4 +321,8 @@ body.dark #light-mode-toggle{
     display: none;
 }
 
+body.dark .contributors-card img{
+    filter: invert(1) hue-rotate(182deg) brightness(1);
+}
+
 /* Code Snippet Styles (End) */
