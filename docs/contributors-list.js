@@ -16,7 +16,7 @@ let contributorsList = [
         "pull_request": 13,
     },
     {
-        "username": "Pragya2056",
+        "username": "pragyaasapkota",
         "pull_request": 15,
     },
     {
