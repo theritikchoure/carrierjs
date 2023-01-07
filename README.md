@@ -6,6 +6,8 @@
 
 [![NPM](https://img.shields.io/npm/v/carrierjs.svg)](https://www.npmjs.com/package/carrierjs) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![](https://data.jsdelivr.com/v1/package/npm/carrierjs/badge)](https://www.jsdelivr.com/package/npm/carrierjs) [![install size](https://packagephobia.com/badge?p=carrierjs)](https://packagephobia.com/result?p=carrierjs) [![Twitter Follow](https://img.shields.io/twitter/follow/carrier_js?label=Follow%20%40carrier_js&style=social)](https://twitter.com/carrier_js) [![Featured on Openbase](https://badges.openbase.com/js/featured/carrierjs.svg?style=openbase&token=aMSx3X4kMh92xyGaBRde6CF6tch2lyajOB1qU0M2M+Q=)](https://openbase.com/js/carrierjs?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
 
+[![npm](https://img.shields.io/npm/dw/carrierjs?style=social)](https://www.npmjs.com/package/carrierjs)
+
 [![NPM](https://nodei.co/npm/carrierjs.png)](https://nodei.co/npm/carrierjs/)
 
 ## Table of Contents
