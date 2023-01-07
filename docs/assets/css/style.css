@@ -295,4 +295,30 @@ pre code {
 .hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta-string {
     color: #70a54a;
 }
+
+#theme-toggle a{
+    display: inline-block;
+}
+
+#dark-mode-toggle{
+    display: none;
+}
+
+#light-mode-toggle{
+    display: block;
+}
+
+body.dark{
+    filter: invert(1) hue-rotate(178deg) brightness(1.2);
+    background: black;
+}
+
+body.dark #dark-mode-toggle{
+    display: block;
+}
+
+body.dark #light-mode-toggle{
+    display: none;
+}
+
 /* Code Snippet Styles (End) */
