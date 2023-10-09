@@ -3,10 +3,15 @@
   "version": "2.5.2",
   "description": "Powerful and simple promise based HTTP client for the browser with ultimate caching",
   "main": "carrier.js",
-  "author": "theritikchoure",
+  "author": {
+    "name": "Ritik Chourasiya",
+    "email": "ritvikchoure65@gmail.com",
+    "url": "https://theritikchoure.github.io/"
+  },
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "publish": "npm version patch; npm publish",
+    "test": "start ./test/runner.html"
   },
   "keywords": [
     "xhr",

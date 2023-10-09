@@ -50,15 +50,33 @@ To prevent from the duplicate API requests, **CarrierJs** comes into the picture
 
 ## How it works internally
 
-First, it checks to see whether data exists in the cache. If it exists, it returns data from the cache as a response. If it doesn't exist then it read data from the API server.
+Carrier JS operates with a robust internal mechanism that optimizes API requests through caching and allows you to control data freshness. Here's a detailed breakdown of its internal workings:
 
-Then it writes to the cache and returns the data as response. The subsequent requests will be served through the cache.
+1. **Cache Check:** When you initiate an API request using Carrier JS, it first checks its cache to determine if the requested data is already stored there.
 
-If you want fresh data everytime from the API server, you can pass an extra parameter called `refresh` with value `true` after the API server url.
+2. **Cache Hit:** If the data is found in the cache, Carrier JS promptly retrieves this cached data and returns it as the response. This cache hit not only accelerates response times but also reduces the load on the API server.
 
-This diagram shows how carrierjs internally fulfills the request with its ultimate caching feature.
+3. **Cache Miss:** In cases where the data is not present in the cache, Carrier JS seamlessly proceeds to fetch the data from the API server. It makes a network request to obtain the required information.
+
+4. **Cache Write:** After successfully fetching the data from the API server, Carrier JS writes a copy of this data into its cache. This cache write operation ensures that the data is readily available for subsequent requests.
+
+5. **Caching Benefits:** Subsequent requests for the same data benefit from this caching mechanism. Carrier JS serves the data directly from the cache, eliminating the need to re-fetch it from the server. This results in improved performance, reduced network traffic, and efficient resource utilization.
+
+#### Controlling Data Freshness with refresh Parameter
+
+Carrier JS provides you with the flexibility to decide whether you want to retrieve fresh data from the API server or use cached data. You can achieve this control by utilizing the `refresh` parameter.
+
+- **Using `refresh`:** If you require the freshest data from the API server every time, simply include an extra parameter in your request URL — `refresh=true`. This instructs Carrier JS to bypass the cache and initiate a new request to obtain the latest data from the server.
+
+#### Ultimate Caching Feature
+
+Carrier JS's caching feature is designed to enhance the performance and efficiency of your application. It reduces the overhead of redundant server requests, minimizes bandwidth consumption, and ensures a responsive user experience.
+
+The diagram below illustrates the seamless flow of Carrier JS as it internally fulfills requests, highlighting the prowess of its caching feature:
 
 ![Flow of Carrierjs](./docs/assets/images/code-flow.png)
+
+With Carrier JS, you have the power to strike the perfect balance between performance optimization and data accuracy, all while minimizing the load on your API server.
 
 ## Benefits
 
