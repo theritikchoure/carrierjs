@@ -23,6 +23,7 @@
 - [Set Request Headers](#set-request-headers)
 - [Response Object](#response-object)
 - [Handling Errors](#handling-errors)
+- [References](#references)
 - [Guides](#guides)
 - [Contribution](#contribution)
 - [Attribution](#attribution)
@@ -118,7 +119,7 @@ yarn add carrierjs
 ### Using cdnjs
 
 ```bash
-<script src="https://cdnjs.cloudflare.com/ajax/libs/carrierjs/2.5.0/carrier.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/carrierjs/2.5.2/carrier.js">
 ```
 
 ### Using jsDelivr
@@ -472,6 +473,19 @@ try {
 }
 
 ```
+
+## References
+
+#### HTTP RFCs
+1. [RFC 2616 - Hypertext Transfer Protocol -- HTTP/1.1](https://datatracker.ietf.org/doc/rfc2616/) - This RFC defines the HTTP 1.1 protocol, which is widely used for web communication. It covers the semantics and operations of HTTP methods like GET, POST, PUT, DELETE, and PATCH.
+2. [RFC 7231 - Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://datatracker.ietf.org/doc/rfc7231/) - This RFC updates and replaces RFC 2616, providing the latest HTTP semantics and content specifications.
+3. [RFC 7230 - Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing](https://datatracker.ietf.org/doc/rfc7230/) - This RFC defines the syntax and routing of HTTP messages, including headers and message parsing.
+
+#### IndexedDB
+1. [Indexed Database API (W3C Recommendation)](https://www.w3.org/TR/IndexedDB/) - Refer to the W3C Recommendation for Indexed Database API, which defines the web standard for client-side storage in web browsers.
+
+These references cover the HTTP protocol and the use of IndexedDB, which are relevant to the Carrier.js library. Depending on the specific features and functionality of the library, you may also want to refer to other RFCs or web standards related to specific HTTP methods or browser technologies.
+
 
 ## Guides
 
