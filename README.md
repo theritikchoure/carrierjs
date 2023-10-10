@@ -24,7 +24,6 @@
 - [Response Object](#response-object)
 - [Handling Errors](#handling-errors)
 - [References](#references)
-- [Guides](#guides)
 - [Contribution](#contribution)
 - [Attribution](#attribution)
 - [License](#license)
@@ -485,27 +484,6 @@ try {
 1. [Indexed Database API (W3C Recommendation)](https://www.w3.org/TR/IndexedDB/) - Refer to the W3C Recommendation for Indexed Database API, which defines the web standard for client-side storage in web browsers.
 
 These references cover the HTTP protocol and the use of IndexedDB, which are relevant to the Carrier.js library. Depending on the specific features and functionality of the library, you may also want to refer to other RFCs or web standards related to specific HTTP methods or browser technologies.
-
-
-## Guides
-
-<table>
-
-<!-- First Row -->
-<tr>
-<td>
-<a href="https://hackernoon.com/how-to-implement-caching-in-react-using-carrierjs">
-<img width="140px" src="https://hackernoon.com/_next/image?url=https%3A%2F%2Fcdn.hackernoon.com%2Fimages%2FwmX5pUAo8OZNJ7VwDt1DOfj0RT83-5qc3j9d.jpeg&w=1200&q=75">
-</a>
-</td>
-<td>
-<a href="https://hackernoon.com/how-to-implement-caching-in-react-using-carrierjs">
-How to Implement Caching in React Using CarrierJS
-</a> (Hackernoon) <br>
-</td>
-</tr>
-
-</table>
 
 
 ## Contribution
